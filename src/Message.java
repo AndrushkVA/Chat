@@ -1,21 +1,19 @@
-import javax.xml.crypto.Data;
 import java.io.Serializable;
+import java.util.Calendar;
 
 /**
  * Created by ֲÿקוסכאג on 14.02.2016.
  */
+
 public class Message implements Serializable{
-    private int id;
     private String message;
     private String author;
-    private Data timestamp;
+    private String timestamp;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Message(String author, String message, String timestamp) {
+        this.author = author;
+        this.message = message;
+        this.timestamp = timestamp;
     }
 
     public String getMessage() {
@@ -34,12 +32,20 @@ public class Message implements Serializable{
         this.author = author;
     }
 
-    public Data getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Data timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
+    @Override
+    public String toString() {
+        return "Message{" +
+                "message='" + message + '\'' +
+                ", author='" + author + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
