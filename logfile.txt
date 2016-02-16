@@ -1,0 +1,79 @@
+Select the desired operation:
+1)Upload a file;
+2)Save to File;
+3)Add new message;
+4)Delete a message by id number;
+5)Show all messages history;
+6)Search author's posts;
+7)Search by keyword;
+8)View message history for a certain period
+9)Quit the program;
+========================================
+
+The user wants to download the information from the sms.json file
+File has been successfully read
+
+========================================
+A user wants to know the entire history of messages
+Finded messages:
+
+ID: 1
+Author: Slava
+Message: hi
+Timestamp: 2016-02-15 17:36:32
+
+ID: 2
+Author: Slava
+Message: Hello
+Timestamp: 2016-02-15 17:36:52
+
+ID: 3
+Author: Lera
+Message: Hi
+Timestamp: 2016-02-15 17:37:00
+
+ID: 4
+Author: Slava
+Message: Hi, Valerie
+Timestamp: 2016-02-15 17:44:09
+
+ID: 5
+Author: Vlad
+Message: Cool day!
+Timestamp: 2016-02-16 00:53:50
+
+========================================
+The user wants to download the information from the mms.json file
+File has been successfully read
+
+========================================
+A user wants to know the entire history of messages
+Finded messages:
+
+ID: 1
+Author: Slava
+Message: hi
+Timestamp: 2016-02-15 17:36:32
+
+ID: 2
+Author: Slava
+Message: Hello
+Timestamp: 2016-02-15 17:36:52
+
+ID: 4
+Author: Slava
+Message: Hi, Valerie
+Timestamp: 2016-02-15 17:44:09
+
+ID: 5
+Author: Vlad
+Message: Cool day!
+Timestamp: 2016-02-16 00:53:50
+
+ID: 6
+Author: Kirill
+Message: UP
+Timestamp: 2016-02-16 11:28:21
+
+========================================
+null
