@@ -43,37 +43,4 @@ Message: Cool day!
 Timestamp: 2016-02-16 00:53:50
 
 ========================================
-The user wants to download the information from the mms.json file
-File has been successfully read
-
-========================================
-A user wants to know the entire history of messages
-Finded messages:
-
-ID: 1
-Author: Slava
-Message: hi
-Timestamp: 2016-02-15 17:36:32
-
-ID: 2
-Author: Slava
-Message: Hello
-Timestamp: 2016-02-15 17:36:52
-
-ID: 4
-Author: Slava
-Message: Hi, Valerie
-Timestamp: 2016-02-15 17:44:09
-
-ID: 5
-Author: Vlad
-Message: Cool day!
-Timestamp: 2016-02-16 00:53:50
-
-ID: 6
-Author: Kirill
-Message: UP
-Timestamp: 2016-02-16 11:28:21
-
-========================================
 null
