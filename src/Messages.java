@@ -12,7 +12,7 @@ import java.util.*;
 public class Messages {
     private List<Message> messages;
 
-    public Messages(){
+    public Messages() {
         messages = new ArrayList<Message>();
     }
 
@@ -20,15 +20,17 @@ public class Messages {
         return messages;
     }
 
-    public void addMessage(Message message){
+    public void addMessage(Message message) {
         messages.add(message);
     }
 
-    public long createID(){
+    public long createID() {
         long id;
-        if (messages.size() > 0){
+        if (messages.size() > 0) {
             id = messages.get(messages.size() - 1).getId() + 1;
-        } else id = 1;
+        } else{
+            id = 1;
+        }
         return id;
     }
 
@@ -44,10 +46,14 @@ public class Messages {
         id = createID();
         System.out.println("Enter your name:");
         author = sc.nextLine();
-        if (author.length() == 0) throw new Exception("You did not entered a name!");
+        if (author.length() == 0){
+            throw new Exception("You did not entered a name!");
+        }
         System.out.println("Enter your message:");
         message = sc.nextLine();
-        if (message.length() == 0) throw new Exception("You did not enter a message!");
+        if (message.length() == 0){
+            throw new Exception("You did not enter a message!");
+        }
         millis = date.getTime();
 
         addMessage(new Message(id, author, message, String.valueOf(millis)));
@@ -55,44 +61,58 @@ public class Messages {
     }
 
     public void deleteMessageByID(long id, PrintStream ps) throws Exception {
-        int count = 0;
-        for (Message ms : messages){
-            if(id == ms.getId()) {
+        for (Message ms : messages) {
+            if (id == ms.getId()) {
                 messages.remove(ms);
                 ps.append("Message the given id was successfully removed");
-            } else count++;
+                return;
+            }
         }
-        if (count == messages.size()) throw new Exception("Messages with this id does not exist!");
+        throw new Exception("Messages with this id does not exist!");
     }
 
     public void showHistoryMessages(List<Message> list, PrintStream ps) throws Exception {
-        if (list.size() == 0) throw new Exception("Message history is empty!");
+        if (list.size() == 0){
+            throw new Exception("Message history is empty!");
+        }
         ps.append("Finded messages:\n");
-        for (Message ms : list){
+        for (Message ms : list) {
             System.out.println(ms.toChronologicString());
-            ps.append(ms.toChronologicString());
+            ps.append(ms.toChronologicString() + "\n");
         }
     }
 
     public List<Message> searchMessagesByAuthor(String author) throws Exception {
         List<Message> findedMessges = new ArrayList<Message>();
         int count = 0;
-        for (Message item : messages){
-            if (author.toLowerCase().equals(item.getAuthor().toLowerCase())) findedMessges.add(item);
-            else count++;
+        for (Message item : messages) {
+            if (author.toLowerCase().equals(item.getAuthor().toLowerCase())){
+                findedMessges.add(item);
+            }
+            else{
+                count++;
+            }
         }
-        if (count == messages.size()) throw new Exception("This author does not exist!");
+        if (count == messages.size()){
+            throw new Exception("This author does not exist!");
+        }
         return findedMessges;
     }
 
     public List<Message> searchMessagesByKeyword(String keyword) throws Exception {
         List<Message> findedMessges = new ArrayList<Message>();
         int count = 0;
-        for (Message item : messages){
-            if(item.getMessage().toLowerCase().indexOf(keyword.toLowerCase()) >= 0) findedMessges.add(item);
-            else count++;
+        for (Message item : messages) {
+            if (item.getMessage().toLowerCase().indexOf(keyword.toLowerCase()) >= 0){
+                findedMessges.add(item);
+            }
+            else{
+                count++;
+            }
         }
-        if (count == messages.size()) throw new Exception("This word does not exist!");
+        if (count == messages.size()){
+            throw new Exception("This word does not exist!");
+        }
         return findedMessges;
     }
 
@@ -105,11 +125,15 @@ public class Messages {
         long milF = dateF.getTime();
         long milB = dateB.getTime();
         int count = 0;
-        for(Message item : messages){
-            if(milF <= Long.parseLong(item.getTimestamp()) && Long.parseLong(item.getTimestamp()) <= milB) findedMessges.add(item);
+        for (Message item : messages) {
+            if (milF <= Long.parseLong(item.getTimestamp()) && Long.parseLong(item.getTimestamp()) <= milB) {
+                findedMessges.add(item);
+            }
             else count++;
         }
-        if (count == messages.size()) throw new Exception("Posts in this period not found!");
+        if (count == messages.size()){
+            throw new Exception("Posts in this period not found!");
+        }
         return findedMessges;
     }
 
@@ -117,9 +141,8 @@ public class Messages {
         Gson gson = new Gson();
         BufferedReader br = new BufferedReader(new FileReader(file));
         if (file.length() > 4) {
-            messages = gson.fromJson(br, new TypeToken<ArrayList<Message>>() {
-            }.getType());
-            ps.println("Found in the information file:\n" + messages.toString());
+            messages = gson.fromJson(br, new TypeToken<ArrayList<Message>>() {}.getType());
+            ps.println("File has been successfully read");
             System.out.println(messages.toString());
         } else {
             System.out.println("JSON-file is empty");

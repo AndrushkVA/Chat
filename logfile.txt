@@ -1,0 +1,17 @@
+Select the desired operation:
+1)Upload a file;
+2)Save to File;
+3)Add new message;
+4)Delete a message by id number;
+5)Show all messages history;
+6)Search author's posts;
+7)Search by keyword;
+8)View message history for a certain period
+9)Quit the program;
+========================================
+
+The user wants to download the information from the mmm.json file
+File has been successfully read
+
+========================================
+This user has decided to quit the application
