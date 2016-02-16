@@ -4,6 +4,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by ֲÿקוסכאג on 14.02.2016.
@@ -73,7 +75,7 @@ public class Messages {
 
     public void showHistoryMessages(List<Message> list, PrintStream ps) throws Exception {
         if (list.size() == 0){
-            throw new Exception("Message history is empty!");
+            throw new Exception("Messages not found!");
         }
         ps.append("Finded messages:\n");
         for (Message ms : list) {
@@ -105,13 +107,31 @@ public class Messages {
         for (Message item : messages) {
             if (item.getMessage().toLowerCase().indexOf(keyword.toLowerCase()) >= 0){
                 findedMessges.add(item);
-            }
-            else{
+            } else{
                 count++;
             }
         }
         if (count == messages.size()){
             throw new Exception("This word does not exist!");
+        }
+        return findedMessges;
+    }
+
+    public List<Message> searchMessagesByRegex(String regex) throws Exception {
+        List<Message> findedMessges = new ArrayList<Message>();
+        Pattern p = Pattern.compile(regex);
+        Matcher m;
+        int count = 0;
+        for (Message item : messages){
+            m = p.matcher(item.getMessage());
+            if(m.matches()){
+                findedMessges.add(item);
+            } else{
+                count++;
+            }
+        }
+        if (count == messages.size()){
+            throw new Exception("This regex does not exist!");
         }
         return findedMessges;
     }

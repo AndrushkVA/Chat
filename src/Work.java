@@ -17,12 +17,14 @@ public class Work {
         ps.println("Select the desired operation:\n" +
                 "1)Upload a file;\n2)Save to File;\n3)Add new message;\n4)Delete a message by id number;\n" +
                 "5)Show all messages history;\n6)Search author's posts;\n7)Search by keyword;\n" +
-                "8)View message history for a certain period\n9)Quit the program;" + delimiter);
+                "8)Search for a regular expression;\n9)View message history for a certain period\n" +
+                "10)Quit the program;" + delimiter);
         while(b) {
             System.out.println(delimiter + "Select the desired operation:\n" +
                     "1)Upload a file;\n2)Save to File;\n3)Add new message;\n4)Delete a message by id number;\n" +
                     "5)Show all messages history;\n6)Search author's posts;\n7)Search by keyword;\n" +
-                    "8)View message history for a certain period\n9)Quit the program;");
+                    "8)Search for a regular expression;\n9)View message history for a certain period\n" +
+                    "10)Quit the program;" + delimiter);
             int answer = sc.nextInt();
             if (answer < 1 || answer >9){
                 throw new Exception("Such variants of the answer does not exist!");
@@ -79,6 +81,14 @@ public class Work {
                     ps.append(delimiter);
                     break;
                 case 8:
+                    System.out.println("Enter a regular expression:");
+                    String regex = sc.next();
+                    ps.append("The user wants to find a message by a regular expression \"" + regex + "\"\n");
+                    resultSearch = messages.searchMessagesByRegex(regex);
+                    messages.showHistoryMessages(resultSearch, ps);
+                    ps.append(delimiter);
+                    break;
+                case 9:
                     System.out.print("Enter the period of \"yyyy:MM:dd HH:mm:ss\" \nFrom:");
                     String dateFrom = sc.next();
                     System.out.print("Before:");
@@ -89,7 +99,7 @@ public class Work {
                     messages.showHistoryMessages(resultSearch, ps);
                     ps.append(delimiter);
                     break;
-                case 9:
+                case 10:
                     ps.append("This user has decided to quit the application");
                     System.out.println("Do not forget to save your message history!\n" +
                             "You sure you want to exit the program?(y/n)");
