@@ -1,6 +1,3 @@
+*.iml
 .idea/
 out/
-Chat.iml
-logfile.txt
-mms.json
-sms.json
