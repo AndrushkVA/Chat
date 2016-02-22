@@ -14,19 +14,21 @@ public class Work {
         Messages messages = new Messages();
         Scanner sc = new Scanner(System.in);
         boolean b = true;
+
         ps.println("Select the desired operation:\n" +
                 "1)Upload a file;\n2)Save to File;\n3)Add new message;\n4)Delete a message by id number;\n" +
                 "5)Show all messages history;\n6)Search author's posts;\n7)Search by keyword;\n" +
                 "8)Search for a regular expression;\n9)View message history for a certain period\n" +
                 "10)Quit the program;" + delimiter);
-        while(b) {
+
+        while (b) {
             System.out.println(delimiter + "Select the desired operation:\n" +
                     "1)Upload a file;\n2)Save to File;\n3)Add new message;\n4)Delete a message by id number;\n" +
                     "5)Show all messages history;\n6)Search author's posts;\n7)Search by keyword;\n" +
                     "8)Search for a regular expression;\n9)View message history for a certain period\n" +
                     "10)Quit the program;" + delimiter);
             int answer = sc.nextInt();
-            if (answer < 1 || answer >9){
+            if (answer < 1 || answer > 10) {
                 throw new Exception("Such variants of the answer does not exist!");
             }
             long delId;
@@ -34,7 +36,7 @@ public class Work {
                 case 1:
                     System.out.println("Enter the file name without the extension:");
                     String fileInputName = sc.next();
-                    ps.append("The user wants to download the information from the " + fileInputName + ".json file\n");
+                    ps.append("The user wants to download the information from the ").append(fileInputName).append(".json file\n");
                     File inputFile = new File(fileInputName + ".json");
                     messages.readJSON(inputFile, ps);
                     ps.append(delimiter);
@@ -42,7 +44,7 @@ public class Work {
                 case 2:
                     System.out.println("Enter the file name without the extension:");
                     String fileOutputName = sc.next();
-                    ps.append("The user wants to save the information to the " + fileOutputName + ".json file\n");
+                    ps.append("The user wants to save the information to the ").append(fileOutputName).append(".json file\n");
                     File outputFile = new File(fileOutputName + ".json");
                     messages.writeJSON(outputFile, ps);
                     ps.append(delimiter);
@@ -55,7 +57,7 @@ public class Work {
                 case 4:
                     System.out.println("Enter the message id");
                     delId = sc.nextLong();
-                    ps.append("A user wants to delete the message with ID number:" + String.valueOf(delId) + "\n");
+                    ps.append("A user wants to delete the message with ID number:").append(String.valueOf(delId)).append("\n");
                     messages.deleteMessageByID(delId, ps);
                     ps.append(delimiter);
                     break;
@@ -67,7 +69,7 @@ public class Work {
                 case 6:
                     System.out.println("Enter the name of the author:");
                     String author = sc.next();
-                    ps.append("The user wants to find all the user " + author + " messages\n");
+                    ps.append("The user wants to find all the user ").append(author).append(" messages\n");
                     resultSearch = messages.searchMessagesByAuthor(author);
                     messages.showHistoryMessages(resultSearch, ps);
                     ps.append(delimiter);
@@ -75,7 +77,7 @@ public class Work {
                 case 7:
                     System.out.println("Enter a keyword:");
                     String keyword = sc.next();
-                    ps.append("The user wants to find a message containing the word \"" + keyword + "\"\n");
+                    ps.append("The user wants to find a message containing the word \"").append(keyword).append("\"\n");
                     resultSearch = messages.searchMessagesByKeyword(keyword);
                     messages.showHistoryMessages(resultSearch, ps);
                     ps.append(delimiter);
@@ -83,7 +85,7 @@ public class Work {
                 case 8:
                     System.out.println("Enter a regular expression:");
                     String regex = sc.next();
-                    ps.append("The user wants to find a message by a regular expression \"" + regex + "\"\n");
+                    ps.append("The user wants to find a message by a regular expression \"").append(regex).append("\"\n");
                     resultSearch = messages.searchMessagesByRegex(regex);
                     messages.showHistoryMessages(resultSearch, ps);
                     ps.append(delimiter);
@@ -94,7 +96,7 @@ public class Work {
                     System.out.print("Before:");
                     String dateBefore = sc.next();
                     System.out.println();
-                    ps.append("The user wants to find a message from " + dateFrom + " before " + dateBefore + "\n");
+                    ps.append("The user wants to find a message from ").append(dateFrom).append(" before ").append(dateBefore).append("\n");
                     resultSearch = messages.viewHistoryACertainPeriod(dateFrom, dateBefore);
                     messages.showHistoryMessages(resultSearch, ps);
                     ps.append(delimiter);
@@ -104,7 +106,7 @@ public class Work {
                     System.out.println("Do not forget to save your message history!\n" +
                             "You sure you want to exit the program?(y/n)");
                     String ans = sc.next();
-                    switch (ans){
+                    switch (ans) {
                         case "y":
                             System.out.println("\nBye-bye!");
                             b = false;
@@ -113,9 +115,7 @@ public class Work {
                     break;
             }
         }
-
     }
-
 }
 //messages.writeJSON(file);
 //new Date(System.currentTimeMillis()).toString()

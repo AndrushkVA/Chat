@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
  * Created by ֲÿקוסכאג on 14.02.2016.
  */
 
-public class Message implements Serializable{
+public class Message implements Serializable {
     private long id;
     private String message;
     private String author;
@@ -35,7 +35,7 @@ public class Message implements Serializable{
         return timestamp;
     }
 
-    public String date(String timestamp){
+    public String date(String timestamp) {
         String data;
         DateFormat TIMESTAMP = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         data = TIMESTAMP.format(Long.parseLong(timestamp));
@@ -52,7 +52,7 @@ public class Message implements Serializable{
                 '}';
     }
 
-    public String toChronologicString(){
+    public String toShow() {
         return "\nID: " + id + "\nAuthor: " + author + "\nMessage: " + message + "\nTimestamp: " + date(timestamp);
     }
 }

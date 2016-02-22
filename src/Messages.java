@@ -15,7 +15,7 @@ public class Messages {
     private List<Message> messages;
 
     public Messages() {
-        messages = new ArrayList<Message>();
+        messages = new ArrayList<>();
     }
 
     public List<Message> getMessages() {
@@ -30,7 +30,7 @@ public class Messages {
         long id;
         if (messages.size() > 0) {
             id = messages.get(messages.size() - 1).getId() + 1;
-        } else{
+        } else {
             id = 1;
         }
         return id;
@@ -48,18 +48,18 @@ public class Messages {
         id = createID();
         System.out.println("Enter your name:");
         author = sc.nextLine();
-        if (author.length() == 0){
+        if (author.length() == 0) {
             throw new Exception("You did not entered a name!");
         }
         System.out.println("Enter your message:");
         message = sc.nextLine();
-        if (message.length() == 0){
+        if (message.length() == 0) {
             throw new Exception("You did not enter a message!");
         }
         millis = date.getTime();
 
         addMessage(new Message(id, author, message, String.valueOf(millis)));
-        ps.append("Message added:\nId: " + String.valueOf(id) + "\nAuthor: " + author + "\nMessage: " + message + "\nDate: " + String.valueOf(millis));
+        ps.append("Message added:\nId: ").append(String.valueOf(id)).append("\nAuthor: ").append(author).append("\nMessage: ").append(message).append("\nDate: ").append(String.valueOf(millis));
     }
 
     public void deleteMessageByID(long id, PrintStream ps) throws Exception {
@@ -74,70 +74,70 @@ public class Messages {
     }
 
     public void showHistoryMessages(List<Message> list, PrintStream ps) throws Exception {
-        if (list.size() == 0){
+        if (list.size() == 0) {
             throw new Exception("Messages not found!");
         }
         ps.append("Finded messages:\n");
         for (Message ms : list) {
-            System.out.println(ms.toChronologicString());
-            ps.append(ms.toChronologicString() + "\n");
+            System.out.println(ms.toShow());
+            ps.append(ms.toShow()).append("\n");
         }
     }
 
     public List<Message> searchMessagesByAuthor(String author) throws Exception {
-        List<Message> findedMessges = new ArrayList<Message>();
+        List<Message> findedMessges = new ArrayList<>();
         int count = 0;
         for (Message item : messages) {
-            if (author.toLowerCase().equals(item.getAuthor().toLowerCase())){
+            if (author.toLowerCase().equals(item.getAuthor().toLowerCase())) {
                 findedMessges.add(item);
-            }
-            else{
+            } else {
                 count++;
             }
         }
-        if (count == messages.size()){
+        if (count == messages.size()) {
             throw new Exception("This author does not exist!");
         }
         return findedMessges;
     }
 
     public List<Message> searchMessagesByKeyword(String keyword) throws Exception {
-        List<Message> findedMessges = new ArrayList<Message>();
+        List<Message> findedMessges = new ArrayList<>();
         int count = 0;
         for (Message item : messages) {
-            if (item.getMessage().toLowerCase().indexOf(keyword.toLowerCase()) >= 0){
+            String message = item.getMessage().toLowerCase();
+            if (message.contains(keyword.toLowerCase())) {
                 findedMessges.add(item);
-            } else{
+            } else {
                 count++;
             }
         }
-        if (count == messages.size()){
+        if (count == messages.size()) {
             throw new Exception("This word does not exist!");
         }
         return findedMessges;
     }
 
     public List<Message> searchMessagesByRegex(String regex) throws Exception {
-        List<Message> findedMessges = new ArrayList<Message>();
+        List<Message> findedMessges = new ArrayList<>();
         Pattern p = Pattern.compile(regex);
         Matcher m;
         int count = 0;
-        for (Message item : messages){
+        for (Message item : messages) {
             m = p.matcher(item.getMessage());
-            if(m.matches()){
+            if (m.matches()) {
                 findedMessges.add(item);
-            } else{
+            } else {
                 count++;
             }
         }
-        if (count == messages.size()){
+        if (count == messages.size()) {
             throw new Exception("This regex does not exist!");
         }
         return findedMessges;
     }
 
     public List<Message> viewHistoryACertainPeriod(String dateFrom, String dateBefore) throws Exception {
-        List<Message> findedMessges = new ArrayList<Message>();
+        List<Message> findedMessges = new ArrayList<>();
         String stringDateFormat = "yyyy-MM-dd,HH:mm:ss";
         SimpleDateFormat format = new SimpleDateFormat(stringDateFormat, Locale.US);
         Date dateF = format.parse(dateFrom);
@@ -148,10 +148,9 @@ public class Messages {
         for (Message item : messages) {
             if (milF <= Long.parseLong(item.getTimestamp()) && Long.parseLong(item.getTimestamp()) <= milB) {
                 findedMessges.add(item);
-            }
-            else count++;
+            } else count++;
         }
-        if (count == messages.size()){
+        if (count == messages.size()) {
             throw new Exception("Posts in this period not found!");
         }
         return findedMessges;
@@ -161,7 +160,8 @@ public class Messages {
         Gson gson = new Gson();
         BufferedReader br = new BufferedReader(new FileReader(file));
         if (file.length() > 4) {
-            messages = gson.fromJson(br, new TypeToken<ArrayList<Message>>() {}.getType());
+            messages = gson.fromJson(br, new TypeToken<ArrayList<Message>>() {
+            }.getType());
             ps.println("File has been successfully read");
             System.out.println(messages.toString());
         } else {

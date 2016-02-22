@@ -12,6 +12,7 @@ public class Main {
         Work work = new Work();
         File fileLog = new File(fileName);
         PrintStream ps = new PrintStream(fileLog);
+
         try {
             work.main(ps);
         } catch (InputMismatchException e) {
