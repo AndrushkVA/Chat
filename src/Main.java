@@ -9,12 +9,12 @@ import java.util.InputMismatchException;
 public class Main {
     public static void main(String[] args) throws IOException {
         String fileName = "logfile.txt";
-        Work work = new Work();
+        Interface anInterface = new Interface();
         File fileLog = new File(fileName);
         PrintStream ps = new PrintStream(fileLog);
 
         try {
-            work.main(ps);
+            anInterface.main(ps);
         } catch (InputMismatchException e) {
             ps.append("You entered is not a number!");
             System.out.println("You entered is not a number!");

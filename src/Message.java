@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by ֲÿקוסכאג on 14.02.2016.
@@ -35,13 +36,6 @@ public class Message implements Serializable {
         return timestamp;
     }
 
-    public String date(String timestamp) {
-        String data;
-        DateFormat TIMESTAMP = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        data = TIMESTAMP.format(Long.parseLong(timestamp));
-        return data;
-    }
-
     @Override
     public String toString() {
         return "Message{" +
@@ -53,6 +47,7 @@ public class Message implements Serializable {
     }
 
     public String toShow() {
-        return "\nID: " + id + "\nAuthor: " + author + "\nMessage: " + message + "\nTimestamp: " + date(timestamp);
+        Messages messages = new Messages();
+        return "\nID: " + id + "\nAuthor: " + author + "\nMessage: " + message + "\nTimestamp: " + messages.date(timestamp);
     }
 }

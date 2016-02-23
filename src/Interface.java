@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Created by ֲÿקוסכאג on 14.02.2016.
  */
 
-public class Work {
+public class Interface {
     public void main(PrintStream ps) throws Exception {
         String delimiter = "\n========================================\n";
         List<Message> resultSearch;
@@ -56,7 +56,7 @@ public class Work {
                     break;
                 case 4:
                     System.out.println("Enter the message id");
-                    delId = sc.nextLong();
+                    delId = Long.parseLong(sc.nextLine());
                     ps.append("A user wants to delete the message with ID number:").append(String.valueOf(delId)).append("\n");
                     messages.deleteMessageByID(delId, ps);
                     ps.append(delimiter);
@@ -97,7 +97,7 @@ public class Work {
                     String dateBefore = sc.nextLine();
                     System.out.println();
                     ps.append("The user wants to find a message from ").append(dateFrom).append(" before ").append(dateBefore).append("\n");
-                    resultSearch = messages.viewHistoryACertainPeriod(dateFrom, dateBefore);
+                    resultSearch = messages.searchMessagesACertainPeriod(dateFrom, dateBefore);
                     messages.showHistoryMessages(resultSearch, ps);
                     ps.append(delimiter);
                     break;

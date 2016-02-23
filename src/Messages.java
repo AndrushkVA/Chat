@@ -2,6 +2,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -34,6 +35,13 @@ public class Messages {
             id = 1;
         }
         return id;
+    }
+
+    public String date(String timestamp) {
+        String data;
+        DateFormat TIMESTAMP = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        data = TIMESTAMP.format(Long.parseLong(timestamp));
+        return data;
     }
 
     public void inputMessage(PrintStream ps) throws Exception {
@@ -136,9 +144,9 @@ public class Messages {
         return findedMessges;
     }
 
-    public List<Message> viewHistoryACertainPeriod(String dateFrom, String dateBefore) throws Exception {
+    public List<Message> searchMessagesACertainPeriod(String dateFrom, String dateBefore) throws Exception {
         List<Message> findedMessges = new ArrayList<>();
-        String stringDateFormat = "yyyy-MM-dd,HH:mm:ss";
+        String stringDateFormat = "yyyy-MM-dd HH:mm:ss";
         SimpleDateFormat format = new SimpleDateFormat(stringDateFormat, Locale.US);
         Date dateF = format.parse(dateFrom);
         Date dateB = format.parse(dateBefore);
