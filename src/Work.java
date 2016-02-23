@@ -12,9 +12,8 @@ public class Work {
         String delimiter = "\n========================================\n";
         List<Message> resultSearch;
         Messages messages = new Messages();
-        Scanner sc = new Scanner(System.in);
         boolean b = true;
-
+        Scanner sc = new Scanner(System.in);
         ps.println("Select the desired operation:\n" +
                 "1)Upload a file;\n2)Save to File;\n3)Add new message;\n4)Delete a message by id number;\n" +
                 "5)Show all messages history;\n6)Search author's posts;\n7)Search by keyword;\n" +
@@ -22,12 +21,13 @@ public class Work {
                 "10)Quit the program;" + delimiter);
 
         while (b) {
+
             System.out.println(delimiter + "Select the desired operation:\n" +
                     "1)Upload a file;\n2)Save to File;\n3)Add new message;\n4)Delete a message by id number;\n" +
                     "5)Show all messages history;\n6)Search author's posts;\n7)Search by keyword;\n" +
                     "8)Search for a regular expression;\n9)View message history for a certain period\n" +
                     "10)Quit the program;" + delimiter);
-            int answer = sc.nextInt();
+            int answer = Integer.parseInt(sc.nextLine());
             if (answer < 1 || answer > 10) {
                 throw new Exception("Such variants of the answer does not exist!");
             }
@@ -35,7 +35,7 @@ public class Work {
             switch (answer) {
                 case 1:
                     System.out.println("Enter the file name without the extension:");
-                    String fileInputName = sc.next();
+                    String fileInputName = sc.nextLine();
                     ps.append("The user wants to download the information from the ").append(fileInputName).append(".json file\n");
                     File inputFile = new File(fileInputName + ".json");
                     messages.readJSON(inputFile, ps);
@@ -43,7 +43,7 @@ public class Work {
                     break;
                 case 2:
                     System.out.println("Enter the file name without the extension:");
-                    String fileOutputName = sc.next();
+                    String fileOutputName = sc.nextLine();
                     ps.append("The user wants to save the information to the ").append(fileOutputName).append(".json file\n");
                     File outputFile = new File(fileOutputName + ".json");
                     messages.writeJSON(outputFile, ps);
@@ -68,7 +68,7 @@ public class Work {
                     break;
                 case 6:
                     System.out.println("Enter the name of the author:");
-                    String author = sc.next();
+                    String author = sc.nextLine();
                     ps.append("The user wants to find all the user ").append(author).append(" messages\n");
                     resultSearch = messages.searchMessagesByAuthor(author);
                     messages.showHistoryMessages(resultSearch, ps);
@@ -76,7 +76,7 @@ public class Work {
                     break;
                 case 7:
                     System.out.println("Enter a keyword:");
-                    String keyword = sc.next();
+                    String keyword = sc.nextLine();
                     ps.append("The user wants to find a message containing the word \"").append(keyword).append("\"\n");
                     resultSearch = messages.searchMessagesByKeyword(keyword);
                     messages.showHistoryMessages(resultSearch, ps);
@@ -84,7 +84,7 @@ public class Work {
                     break;
                 case 8:
                     System.out.println("Enter a regular expression:");
-                    String regex = sc.next();
+                    String regex = sc.nextLine();
                     ps.append("The user wants to find a message by a regular expression \"").append(regex).append("\"\n");
                     resultSearch = messages.searchMessagesByRegex(regex);
                     messages.showHistoryMessages(resultSearch, ps);
@@ -92,9 +92,9 @@ public class Work {
                     break;
                 case 9:
                     System.out.print("Enter the period of \"yyyy:MM:dd HH:mm:ss\" \nFrom:");
-                    String dateFrom = sc.next();
+                    String dateFrom = sc.nextLine();
                     System.out.print("Before:");
-                    String dateBefore = sc.next();
+                    String dateBefore = sc.nextLine();
                     System.out.println();
                     ps.append("The user wants to find a message from ").append(dateFrom).append(" before ").append(dateBefore).append("\n");
                     resultSearch = messages.viewHistoryACertainPeriod(dateFrom, dateBefore);
@@ -105,7 +105,7 @@ public class Work {
                     ps.append("This user has decided to quit the application");
                     System.out.println("Do not forget to save your message history!\n" +
                             "You sure you want to exit the program?(y/n)");
-                    String ans = sc.next();
+                    String ans = sc.nextLine();
                     switch (ans) {
                         case "y":
                             System.out.println("\nBye-bye!");
