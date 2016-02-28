@@ -17,19 +17,102 @@ File has been successfully read
 ========================================
 The user wants to add a new message
 Message added:
-Id: 6
+Id: d5697c2f-23b3-4f5b-b62e-08f9bfcb6e68
+Author: Slava
+Message: Hi
+Date: 1456692845568
+========================================
+A user wants to know the entire history of messages
+Finded messages:
+
+ID: 1
+Author: Slava
+Message: hi
+Timestamp: 2016-02-15 17:36:32
+
+ID: 2
+Author: Slava
+Message: Hello
+Timestamp: 2016-02-15 17:36:52
+
+ID: 4
+Author: Slava
+Message: Hi, Valerie
+Timestamp: 2016-02-15 17:44:09
+
+ID: 5
+Author: Vlad
+Message: Cool day!
+Timestamp: 2016-02-16 00:53:50
+
+ID: 6
 Author: Slava Andrushkevich
 Message: Hi
-Date: 1456219199002
+Timestamp: 2016-02-23 12:19:59
+
+ID: 7
+Author: Slava Andrushkevich
+Message: Cool day!
+Timestamp: 2016-02-23 12:20:13
+
+ID: d5697c2f-23b3-4f5b-b62e-08f9bfcb6e68
+Author: Slava
+Message: Hi
+Timestamp: 2016-02-28 23:54:05
+
 ========================================
 The user wants to add a new message
 Message added:
-Id: 7
+Id: c29d8765-c4d9-4611-a99d-35d8a44a4cb3
+Author: Lera
+Message: Hello
+Date: 1456692860000
+========================================
+A user wants to know the entire history of messages
+Finded messages:
+
+ID: 1
+Author: Slava
+Message: hi
+Timestamp: 2016-02-15 17:36:32
+
+ID: 2
+Author: Slava
+Message: Hello
+Timestamp: 2016-02-15 17:36:52
+
+ID: 4
+Author: Slava
+Message: Hi, Valerie
+Timestamp: 2016-02-15 17:44:09
+
+ID: 5
+Author: Vlad
+Message: Cool day!
+Timestamp: 2016-02-16 00:53:50
+
+ID: 6
+Author: Slava Andrushkevich
+Message: Hi
+Timestamp: 2016-02-23 12:19:59
+
+ID: 7
 Author: Slava Andrushkevich
 Message: Cool day!
-Date: 1456219213217
+Timestamp: 2016-02-23 12:20:13
+
+ID: d5697c2f-23b3-4f5b-b62e-08f9bfcb6e68
+Author: Slava
+Message: Hi
+Timestamp: 2016-02-28 23:54:05
+
+ID: c29d8765-c4d9-4611-a99d-35d8a44a4cb3
+Author: Lera
+Message: Hello
+Timestamp: 2016-02-28 23:54:20
+
 ========================================
-A user wants to delete the message with ID number:3
+A user wants to delete the message with ID number:d5697c2f-23b3-4f5b-b62e-08f9bfcb6e68
 Message the given id was successfully removed
 ========================================
 A user wants to know the entire history of messages
@@ -53,19 +136,7 @@ Timestamp: 2016-02-15 17:44:09
 ID: 5
 Author: Vlad
 Message: Cool day!
-Timestamp: 2016-02-16No line found: 6
-Author: Slava Andrushkevich
-Message: Hi
-Timestamp: 2016-02-23 12:19:59
-
-ID: 7
-Author: Slava Andrushkevich
-Message: Cool day!
-Timestamp: 2016-02-23 12:20:13
-
-========================================
-The user wants to find all the user Slava Andrushkevich messages
-Finded messages:
+Timestamp: 2016-02-16 00:53:50
 
 ID: 6
 Author: Slava Andrushkevich
@@ -77,84 +148,13 @@ Author: Slava Andrushkevich
 Message: Cool day!
 Timestamp: 2016-02-23 12:20:13
 
-========================================
-The user wants to find a message containing the word "Cool"
-Finded messages:
-
-ID: 5
-Author: Vlad
-Message: Cool day!
-Timestamp: 2016-02-16 00:53:50
-
-ID: 7
-Author: Slava Andrushkevich
-Message: Cool day!
-Timestamp: 2016-02-23 12:20:13
-
-========================================
-The user wants to find a message from 2016-02-15 17:36:51 before 2016-02-23 12:20:00
-Finded messages:
-
-ID: 2
-Author: Slava
+ID: c29d8765-c4d9-4611-a99d-35d8a44a4cb3
+Author: Lera
 Message: Hello
-Timestamp: 2016-02-15 17:36:52
-
-ID: 4
-Author: Slava
-Message: Hi, Valerie
-Timestamp: 2016-02-15 17:44:09
-
-ID: 5
-Author: Vlad
-Message: Cool day!
-Timestamp: 2016-02-16 00:53:50
-
-ID: 6
-Author: Slava Andrushkevich
-Message: Hi
-Timestamp: 2016-02-23 12:19:59
-
-========================================
-A user wants to know the entire history of messages
-Finded messages:
-
-ID: 1
-Author: Slava
-Message: hi
-Timestamp: 2016-02-15 17:36:32
-
-ID: 2
-Author: Slava
-Message: Hello
-Timestamp: 2016-02-15 17:36:52
-
-ID: 4
-Author: Slava
-Message: Hi, Valerie
-Timestamp: 2016-02-15 17:44:09
-
-ID: 5
-Author: Vlad
-Message: Cool day!
-Timestamp: 2016-02-16 00:53:50
-
-ID: 6
-Author: Slava Andrushkevich
-Message: Hi
-Timestamp: 2016-02-23 12:19:59
-
-ID: 7
-Author: Slava Andrushkevich
-Message: Cool day!
-Timestamp: 2016-02-23 12:20:13
+Timestamp: 2016-02-28 23:54:20
 
 ========================================
 The user wants to save the information to the sms.json file
-Information recorded
-
-========================================
-The user wants to save the information to the mms.json file
 Information recorded
 
 ========================================

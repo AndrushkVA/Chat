@@ -31,7 +31,7 @@ public class Interface {
             if (answer < 1 || answer > 10) {
                 throw new Exception("Such variants of the answer does not exist!");
             }
-            long delId;
+            String delId;
             switch (answer) {
                 case 1:
                     System.out.println("Enter the file name without the extension:");
@@ -56,7 +56,7 @@ public class Interface {
                     break;
                 case 4:
                     System.out.println("Enter the message id");
-                    delId = Long.parseLong(sc.nextLine());
+                    delId = sc.nextLine();
                     ps.append("A user wants to delete the message with ID number:").append(String.valueOf(delId)).append("\n");
                     messages.deleteMessageByID(delId, ps);
                     ps.append(delimiter);

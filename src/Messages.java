@@ -27,7 +27,7 @@ public class Messages {
         messages.add(message);
     }
 
-    public long createID() {
+    /*public long createID() {
         long id;
         if (messages.size() > 0) {
             id = messages.get(messages.size() - 1).getId() + 1;
@@ -35,7 +35,7 @@ public class Messages {
             id = 1;
         }
         return id;
-    }
+    }*/
 
     public String date(String timestamp) {
         String data;
@@ -48,12 +48,12 @@ public class Messages {
         Scanner sc = new Scanner(System.in);
         Date date = new Date();
 
-        long id;
+        String id;
         String author;
         String message;
         long millis;
 
-        id = createID();
+        id = String.valueOf(UUID.randomUUID());
         System.out.println("Enter your name:");
         author = sc.nextLine();
         if (author.length() == 0) {
@@ -70,9 +70,9 @@ public class Messages {
         ps.append("Message added:\nId: ").append(String.valueOf(id)).append("\nAuthor: ").append(author).append("\nMessage: ").append(message).append("\nDate: ").append(String.valueOf(millis));
     }
 
-    public void deleteMessageByID(long id, PrintStream ps) throws Exception {
+    public void deleteMessageByID(String id, PrintStream ps) throws Exception {
         for (Message ms : messages) {
-            if (id == ms.getId()) {
+            if (id.equals(ms.getId())) {
                 messages.remove(ms);
                 ps.append("Message the given id was successfully removed");
                 return;

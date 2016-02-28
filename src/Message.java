@@ -8,19 +8,19 @@ import java.util.Date;
  */
 
 public class Message implements Serializable {
-    private long id;
+    private String id;
     private String message;
     private String author;
     private String timestamp;
 
-    public Message(long id, String author, String message, String timestamp) {
+    public Message(String id, String author, String message, String timestamp) {
         this.id = id;
         this.author = author;
         this.message = message;
         this.timestamp = timestamp;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
