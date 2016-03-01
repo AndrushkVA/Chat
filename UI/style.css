@@ -1,0 +1,121 @@
+.bg{
+  background: #f0f0f0; 
+}
+
+h1{
+	color: black;
+  text-align: center;
+  font-family: "Times New Roman";
+}
+
+#chat{
+  background: #FFFFFF;
+  border: 2px solid black;
+  height: 500px;
+  width: 800px;
+  margin: 0 auto;
+  overflow-x: none; 
+  overflow-y: auto; 
+}
+
+p{
+  margin: 1px;
+}
+
+.todo-button-re{
+  width: 20px;
+  height: 20px;
+  background: url("http://icons.iconarchive.com/icons/pixelkit/gentle-edges/128/Edit-icon.png");
+  background-size: cover;
+  line-height: 40px;
+  font-size: 40px;
+  text-decoration: none;
+  border: none;
+}
+.todo-button-del{
+  width: 20px;
+  height: 20px;
+  background: url("http://megaicons.net/static/img/icons_sizes/8/178/512/editing-delete-icon.png");
+  background-size: cover;
+  line-height: 40px;
+  font-size: 40px;
+  text-decoration: none;
+  border: none;
+}
+
+.message {
+  border-bottom: 1px solid black;
+}
+
+.myMessage{
+  border-bottom: 1px solid black;
+}
+
+.text {
+  text-align: left;
+  width: 92%;
+}
+
+aside {
+  float: right;
+}
+
+.addMessage{
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  height: 100px auto;
+  width: 800px;
+  margin: 0 auto;
+}
+
+/*.todo-input-Name{
+  background: #FFFFFF;
+  color: black;
+  border: 1px solid #C0CAD5;
+  width: 650px;
+  padding: 3px 25px 3px 3px;
+  padding-bottom: 5px;
+  margin: 5px; 
+  margin-bottom: 0; 
+  outline: 0;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  line-height: 150%;
+  word-wrap: break-word;
+  cursor: text;
+}*/
+
+.myName{
+  background: #FFFFFF;
+  color: black;
+  border: 1px solid #C0CAD5;
+  width: 650px;
+  padding: 3px 25px 3px 3px;
+  padding-bottom: 5px;
+  margin: 5px;
+  margin-bottom: 0;
+  outline: 0;
+  border-radius: 2px;
+  line-height: 150%;
+}
+
+textarea {
+  width: 667px;
+  height: 100px;
+  margin: 5px;
+  color: #444;
+  padding: 5px;
+  overflow: auto;
+  resize: vertical;
+
+  background: #FFFFFF;
+  color: black;
+  border: 1px solid #C0CAD5;
+  outline: 0;
+  border-radius: 2px;
+  line-height: 150%;
+  word-wrap: break-word;
+  cursor: text;
+}
