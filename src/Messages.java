@@ -150,11 +150,11 @@ public class Messages {
         SimpleDateFormat format = new SimpleDateFormat(stringDateFormat, Locale.US);
         Date dateF = format.parse(dateFrom);
         Date dateB = format.parse(dateBefore);
-        long milF = dateF.getTime();
-        long milB = dateB.getTime();
+        long timeFrom = dateF.getTime();
+        long timeBefore = dateB.getTime();
         int count = 0;
         for (Message item : messages) {
-            if (milF <= Long.parseLong(item.getTimestamp()) && Long.parseLong(item.getTimestamp()) <= milB) {
+            if (timeFrom <= Long.parseLong(item.getTimestamp()) && Long.parseLong(item.getTimestamp()) <= timeBefore) {
                 findedMessges.add(item);
             } else count++;
         }
