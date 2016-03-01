@@ -32,6 +32,7 @@ p{
   text-decoration: none;
   border: none;
 }
+
 .todo-button-del{
   width: 20px;
   height: 20px;
@@ -69,36 +70,12 @@ aside {
   margin: 0 auto;
 }
 
-/*.todo-input-Name{
-  background: #FFFFFF;
-  color: black;
-  border: 1px solid #C0CAD5;
-  width: 650px;
-  padding: 3px 25px 3px 3px;
-  padding-bottom: 5px;
-  margin: 5px; 
-  margin-bottom: 0; 
-  outline: 0;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  line-height: 150%;
-  word-wrap: break-word;
-  cursor: text;
-}*/
-
 .myName{
-  background: #FFFFFF;
   color: black;
-  border: 1px solid #C0CAD5;
-  width: 650px;
-  padding: 3px 25px 3px 3px;
-  padding-bottom: 5px;
-  margin: 5px;
-  margin-bottom: 0;
-  outline: 0;
-  border-radius: 2px;
-  line-height: 150%;
+  border: 0px;
+  margin-left: 5px;
+  margin-bottom: 0; 
+  font-size: 20px; 
 }
 
 textarea {
@@ -118,4 +95,17 @@ textarea {
   line-height: 150%;
   word-wrap: break-word;
   cursor: text;
+}
+
+footer{
+  border-bottom:6px solid #282828;
+  background: #8f8383;
+  padding:20px;
+  margin: 0 auto;
+  color:#666;
+  padding-bottom: 5px;
+  font-family: ‘Times New Roman’, Georgia, Helvetica, sans-serif;
+  color: #FFFFFF;
+  font-size: 17px;
+  text-align: right;
 }
