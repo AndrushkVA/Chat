@@ -1,0 +1,265 @@
+$ git log
+commit 2989f7fc883ad039915109ba970a1cac9c24c559
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Thu Mar 3 12:17:03 2016 +0400
+
+    Rebase repo
+
+commit c64acab6a111aa3455c83241bb7cfc2c96828475
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Thu Mar 3 13:16:33 2016 +0400
+
+    Delete .gitignore
+
+commit f9845ff4d4704e0b7a83f02488684523eb9a06f8
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Thu Mar 3 13:13:55 2016 +0400
+
+    Delete sms.java
+
+commit 994d33a60ebbb370236bb84c01985cf5ecea672b
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Thu Mar 3 13:13:16 2016 +0400
+
+    Delete Messages.java
+
+commit e8e537aeccbad89707605a77d115a71dd6f40256
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Thu Mar 3 13:12:05 2016 +0400
+
+    Delete Message.java
+
+commit c8ca3d0c91b0fd0828596edae68b7e194fcbfe48
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Thu Mar 3 13:11:23 2016 +0400
+
+    Delete Main.java
+
+commit 164e375d7f512012abf91bdc693bfd0449fa61db
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Thu Mar 3 13:11:00 2016 +0400
+
+    Delete Interface.java
+
+commit 8fe0a3782d5b128926746bf9ad9a6df913be5722
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Thu Mar 3 13:08:51 2016 +0400
+
+    Delete vk_btn.css
+
+commit c2f2b218ffbbc8990dd996d83c7464a84f70f0a2
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Thu Mar 3 13:08:21 2016 +0400
+
+    Delete style.css
+
+commit 193b2f5c6b10198574f82e4c454b73d36f7666b1
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Thu Mar 3 13:07:43 2016 +0400
+
+    Delete homepage.html
+
+commit 284e2b69f7a2e22f382026c5938cf9f47da13729
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Mar 1 21:59:22 2016 +0400
+
+    add adaptive disign
+
+commit 670bfb73def46381b1b21a65875e9467cd7f7d86
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Mar 1 21:17:24 2016 +0400
+
+    add footer
+
+commit eee66ec36ec2891d7287f2cb28a1160bca2ccea3
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Tue Mar 1 18:14:31 2016 +0400
+
+    Delete Thumbs.db
+
+commit bce790c0bbcd278cc5da72dda43f9d3512e63868
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Mar 1 17:12:31 2016 +0400
+
+    Create using interface
+
+commit 4955ae2c8c6a15550f3c2130a65d9661966b76d1
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Mar 1 17:10:49 2016 +0400
+
+    re
+
+commit 1830f511a7da0bb47a0d63c0ab46cfd05bd74257
+Merge: f731ddf 91ac64a
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Mar 1 17:03:13 2016 +0400
+
+    Merge branch 'master' of https://github.com/AndrushkVA/Chat
+
+commit 91ac64abdc4fa5e37a124f0cb843eb215a989ecd
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Tue Mar 1 18:02:32 2016 +0400
+
+    Delete sms.json
+
+commit 0d83f14eb2f0ed417c3d2afdc17c2ab8191fc110
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Tue Mar 1 18:02:27 2016 +0400
+
+    Delete logfile.txt
+
+commit 3fa3e0a2a006bc4837bc0093b03b07a16db31abb
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Tue Mar 1 18:02:20 2016 +0400
+
+    Delete .gitignore
+
+commit f731ddfdcef21de19a04d8c1db3915ef85ad3ef5
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Mar 1 17:02:48 2016 +0400
+
+    rename methods
+
+commit 31547098d7de3b95189758a68f889f39af09c5e9
+Merge: 69af3d5 b8cee51
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Mon Feb 29 01:19:42 2016 +0400
+
+    Merge branch 'master' of https://github.com/AndrushkVA/Chat
+
+commit b8cee51f392a39f60524323d8a69cc62f74c55e9
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Mon Feb 29 02:12:09 2016 +0400
+
+    Delete file.txt
+
+commit ba635ce65e2a08c9623d69a4573746164851d652
+Author: AndrushkVA <andrushkva17@mail.ru>
+Date:   Mon Feb 29 02:10:14 2016 +0400
+
+    Create file.txt
+
+commit 69af3d5e819b57caa7a36e7702026e11503fe2c2
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Mon Feb 29 01:04:48 2016 +0400
+
+    upgrade method createID
+
+commit cacf4ba5f7b4553e1ef6dc0fb0b73d53d4ae412c
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 23 13:23:57 2016 +0400
+
+    fixedBugs
+
+commit 505d58368f718cc6331c4edd03984502a7565b23
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 23 12:39:44 2016 +0400
+
+    UP
+
+commit 539ddaf3ffbbaa27fb52eafc631864c8e4f4cc7f
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Mon Feb 22 22:18:45 2016 +0400
+
+    UP
+
+commit bffb69946ee80f94ac3409ebc5541473ba3e1337
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 16 15:04:37 2016 +0400
+
+    UP
+
+commit f3f846abb4d62c2c397320a3a1050c13969ab27d
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 16 14:43:26 2016 +0400
+
+    UP
+
+commit 201606c310c8345cbab79968588e49a4e42055a5
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 16 14:41:12 2016 +0400
+
+    UP
+
+commit 30aa3180c7b82eb383e009b62422ea59555803f4
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 16 14:00:31 2016 +0400
+
+    del
+
+commit f42963698dd0ed3a32a2f28a9faf316aae130bce
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 16 13:59:10 2016 +0400
+
+    del
+
+commit 1946b1cdd42376b6ca8233ad22ddbdc2da30c71b
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 16 13:56:28 2016 +0400
+
+    UP
+
+commit 75aa79b3c58559b4e0ea893048fc224c32613983
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 16 13:53:14 2016 +0400
+
+    up
+
+commit 7675ee9d0bdf7edbe415f543c1a863ec733a475c
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 16 13:50:27 2016 +0400
+
+    up
+
+commit d4d68d99a3801338e6928d9d6d9e98d179fa49b3
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 16 13:46:24 2016 +0400
+
+    up
+
+commit c7f07abd392727e22474c305ea68ade15a551191
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Tue Feb 16 02:04:31 2016 +0400
+
+    up
+
+commit 488be28a95edf4ccd5908d1701519c3c590e7a67
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Mon Feb 15 01:02:51 2016 +0400
+
+    up
+
+
+    up
+
+commit 488be28a95edf4ccd5908d1701519c3c590e7a67
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Mon Feb 15 01:02:51 2016 +0400
+
+    up
+
+
+commit 80805a6f4816deb0d2dbe60550fbad0524db42f7
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Sun Feb 14 21:54:38 2016 +0400
+
+    up
+
+commit ab3a5eabff161a597a7b8d33cc989e923f184377
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Sun Feb 14 21:53:47 2016 +0400
+
+    up
+
+commit f7c8b51467dd53d99d27761dd65f9d2ea4abe29f
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Sun Feb 14 21:50:24 2016 +0400
+
+    up
+
+commit 13eb1e2c8a704f485bdb8ad5a5e2d31cba6b081a
+Author: Viachaslau <andrushkva17@mail.ru>
+Date:   Sun Feb 14 19:52:54 2016 +0400
+
+    chat
+(END)
