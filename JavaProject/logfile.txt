@@ -1,0 +1,14 @@
+Select the desired operation:
+1)Upload a file;
+2)Save to File;
+3)Add new message;
+4)Delete a message by id number;
+5)Show all messages history;
+6)Search author's posts;
+7)Search by keyword;
+8)Search for a regular expression;
+9)View message history for a certain period
+10)Quit the program;
+========================================
+
+This user has decided to quit the application

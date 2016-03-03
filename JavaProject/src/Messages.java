@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  */
 
 public class Messages {
-    private List<Message> messages;
+    private List<Message> messages; //:D
 
     public Messages() {
         messages = new ArrayList<>();
@@ -26,16 +26,6 @@ public class Messages {
     public void addMessage(Message message) {
         messages.add(message);
     }
-
-    /*public long createID() {
-        long id;
-        if (messages.size() > 0) {
-            id = messages.get(messages.size() - 1).getId() + 1;
-        } else {
-            id = 1;
-        }
-        return id;
-    }*/
 
     public String date(String timestamp) {
         String data;
