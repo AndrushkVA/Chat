@@ -3,10 +3,6 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by ֲÿקוסכאג on 14.02.2016.
- */
-
 public class Interface {
     public void main(PrintStream ps) throws Exception {
         String delimiter = "\n========================================\n";

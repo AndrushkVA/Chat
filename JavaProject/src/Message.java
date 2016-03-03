@@ -1,11 +1,4 @@
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-/**
- * Created by ֲÿקוסכאג on 14.02.2016.
- */
 
 public class Message implements Serializable {
     private String id;

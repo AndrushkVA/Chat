@@ -2,10 +2,6 @@ import java.io.*;
 import java.text.ParseException;
 import java.util.InputMismatchException;
 
-/**
- * Created by Вячеслав on 14.02.2016.
- */
-
 public class Main {
     public static void main(String[] args) throws IOException {
         String fileName = "logfile.txt";

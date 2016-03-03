@@ -8,10 +8,6 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by ֲÿקוסכאג on 14.02.2016.
- */
-
 public class Messages {
     private List<Message> messages; //:D
 
