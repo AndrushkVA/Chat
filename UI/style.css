@@ -1,37 +1,4 @@
-@media  screen and (max-width: 450px){
 
-  div#chat {
-    position: fixed;
-    width: 100%;
-    height: 50%;
-    background: #FFFFFF;
-    border: 2px solid black;
-    margin-left: 0px;
-    margin-right: 5px;
-    overflow-y: auto;
-  }
-
-  .addMessage{
-    top: 60%;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
-    height: auto;
-    width: 100%;
-    margin: 0 auto;
-    position: fixed;
-  }
-
-  textarea#todoText{
-    width: 100%;
-    position: relative;
-  }
-
-  button#addButton {
-    margin-left: 5px;
-    margin-bottom: 5px;
-  }
-}
 
 .bg{
   background: #f0f0f0; 
@@ -143,4 +110,39 @@ footer{
   color: #FFFFFF;
   font-size: 17px;
   text-align: right;
+}
+
+@media  screen and (max-width: 450px){
+
+  div#chat {
+    position: fixed;
+    width: 100%;
+    height: 50%;
+    background: #FFFFFF;
+    border: 2px solid black;
+    margin-left: 0px;
+    margin-right: 5px;
+    overflow-y: auto;
+  }
+
+  .addMessage{
+    top: 60%;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    height: auto;
+    width: 97%;
+    margin: 0 auto;
+    position: fixed;
+  }
+
+  textarea#todoText{
+    width: 94%;
+    position: relative;
+  }
+
+  button#addButton {
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
 }
