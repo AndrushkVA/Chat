@@ -1,3 +1,5 @@
+package com.bsu.slava.up;
+
 import java.io.Serializable;
 
 public class Message implements Serializable {
