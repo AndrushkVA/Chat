@@ -1,11 +1,6 @@
-import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+package com.bsu.slava.up;
 
-/**
- * Created by ֲÿקוסכאג on 14.02.2016.
- */
+import java.io.Serializable;
 
 public class Message implements Serializable {
     private String id;

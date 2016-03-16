@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "message": "hi",
+    "author": "Slava",
+    "timestamp": "1455546992015"
+  },
+  {
+    "id": "2",
+    "message": "Hello",
+    "author": "Slava",
+    "timestamp": "1455547012140"
+  },
+  {
+    "id": "4",
+    "message": "Hi, Valerie",
+    "author": "Slava",
+    "timestamp": "1455547449200"
+  },
+  {
+    "id": "5",
+    "message": "Cool day!",
+    "author": "Vlad",
+    "timestamp": "1455573230190"
+  },
+  {
+    "id": "6",
+    "message": "Hi",
+    "author": "Slava Andrushkevich",
+    "timestamp": "1456219199002"
+  },
+  {
+    "id": "7",
+    "message": "Cool day!",
+    "author": "Slava Andrushkevich",
+    "timestamp": "1456219213217"
+  },
+  {
+    "id": "c29d8765-c4d9-4611-a99d-35d8a44a4cb3",
+    "message": "Hello",
+    "author": "Lera",
+    "timestamp": "1456692860000"
+  }
+]
