@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.lang.String;
+import java.lang.System;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,56 +35,25 @@ public class Interface {
                     saveFile(logger, messages, sc);
                     break;
                 case 3:
-                    logger.append("The user wants to add a new message\n");
-                    messages.inputMessage(logger);
-                    logger.append(DELIMETER);
+                    addMessage(logger, messages);
                     break;
                 case 4:
-                    System.out.println("Enter the message id");
-                    String delId = sc.nextLine();
-                    logger.append("A user wants to delete the message with ID number:").append(String.valueOf(delId)).append("\n");
-                    messages.deleteMessageByID(delId, logger);
-                    logger.append(DELIMETER);
+                    deleteMessage(logger, messages, sc);
                     break;
                 case 5:
-                    logger.append("A user wants to know the entire history of messages\n");
-                    messages.showHistoryMessages(messages.getMessages(), logger);
-                    logger.append(DELIMETER);
+                    showHistory(logger, messages);
                     break;
                 case 6:
-                    System.out.println("Enter the name of the author:");
-                    String author = sc.nextLine();
-                    logger.append("The user wants to find all the user ").append(author).append(" messages\n");
-                    resultSearch = messages.searchMessagesByAuthor(author);
-                    messages.showHistoryMessages(resultSearch, logger);
-                    logger.append(DELIMETER);
+                    searchMessagesByAuthor(logger, messages, sc);
                     break;
                 case 7:
-                    System.out.println("Enter a keyword:");
-                    String keyword = sc.nextLine();
-                    logger.append("The user wants to find a message containing the word \"").append(keyword).append("\"\n");
-                    resultSearch = messages.searchMessagesByKeyword(keyword);
-                    messages.showHistoryMessages(resultSearch, logger);
-                    logger.append(DELIMETER);
+                    searchMessagesByKeyword(logger, messages, sc);
                     break;
                 case 8:
-                    System.out.println("Enter a regular expression:");
-                    String regex = sc.nextLine();
-                    logger.append("The user wants to find a message by a regular expression \"").append(regex).append("\"\n");
-                    resultSearch = messages.searchMessagesByRegex(regex);
-                    messages.showHistoryMessages(resultSearch, logger);
-                    logger.append(DELIMETER);
+                    searchMessagesByRegex(logger, messages, sc);
                     break;
                 case 9:
-                    System.out.print("Enter the period of \"yyyy:MM:dd HH:mm:ss\" \nFrom:");
-                    String dateFrom = sc.nextLine();
-                    System.out.print("Before:");
-                    String dateBefore = sc.nextLine();
-                    System.out.println();
-                    logger.append("The user wants to find a message from ").append(dateFrom).append(" before ").append(dateBefore).append("\n");
-                    resultSearch = messages.searchMessagesForCertainPeriod(dateFrom, dateBefore);
-                    messages.showHistoryMessages(resultSearch, logger);
-                    logger.append(DELIMETER);
+                    searchMessagesForCertainPeriod(logger, messages, sc);
                     break;
                 case 10:
                     logger.append("This user has decided to quit the application");
@@ -97,6 +68,69 @@ public class Interface {
                     break;
             }
         }
+    }
+
+    private void searchMessagesForCertainPeriod(PrintStream logger, Messages messages, Scanner sc) {
+        List<Message> resultSearch;
+        System.out.print("Enter the period of \"yyyy:MM:dd HH:mm:ss\" \nFrom:");
+        String dateFrom = sc.nextLine();
+        System.out.print("Before:");
+        String dateBefore = sc.nextLine();
+        System.out.println();
+        logger.append("The user wants to find a message from ").append(dateFrom).append(" before ").append(dateBefore).append("\n");
+        resultSearch = messages.searchMessagesForCertainPeriod(dateFrom, dateBefore);
+        messages.showHistoryMessages(resultSearch, logger);
+        logger.append(DELIMETER);
+    }
+
+    private void searchMessagesByRegex(PrintStream logger, Messages messages, Scanner sc) {
+        List<Message> resultSearch;
+        System.out.println("Enter a regular expression:");
+        String regex = sc.nextLine();
+        logger.append("The user wants to find a message by a regular expression \"").append(regex).append("\"\n");
+        resultSearch = messages.searchMessagesByRegex(regex);
+        messages.showHistoryMessages(resultSearch, logger);
+        logger.append(DELIMETER);
+    }
+
+    private void searchMessagesByKeyword(PrintStream logger, Messages messages, Scanner sc) {
+        List<Message> resultSearch;
+        System.out.println("Enter a keyword:");
+        String keyword = sc.nextLine();
+        logger.append("The user wants to find a message containing the word \"").append(keyword).append("\"\n");
+        resultSearch = messages.searchMessagesByKeyword(keyword);
+        messages.showHistoryMessages(resultSearch, logger);
+        logger.append(DELIMETER);
+    }
+
+    private void searchMessagesByAuthor(PrintStream logger, Messages messages, Scanner sc) {
+        List<Message> resultSearch;
+        System.out.println("Enter the name of the author:");
+        String author = sc.nextLine();
+        logger.append("The user wants to find all the user ").append(author).append(" messages\n");
+        resultSearch = messages.searchMessagesByAuthor(author);
+        messages.showHistoryMessages(resultSearch, logger);
+        logger.append(DELIMETER);
+    }
+
+    private void showHistory(PrintStream logger, Messages messages) {
+        logger.append("A user wants to know the entire history of messages\n");
+        messages.showHistoryMessages(messages.getMessages(), logger);
+        logger.append(DELIMETER);
+    }
+
+    private void deleteMessage(PrintStream logger, Messages messages, Scanner sc) {
+        System.out.println("Enter the message id");
+        String delId = sc.nextLine();
+        logger.append("A user wants to delete the message with ID number:").append(String.valueOf(delId)).append("\n");
+        messages.deleteMessageByID(delId, logger);
+        logger.append(DELIMETER);
+    }
+
+    private void addMessage(PrintStream logger, Messages messages) {
+        logger.append("The user wants to add a new message\n");
+        messages.inputMessage(logger);
+        logger.append(DELIMETER);
     }
 
     private void saveFile(PrintStream logger, Messages messages, Scanner sc) throws FileNotFoundException {
@@ -117,5 +151,3 @@ public class Interface {
         logger.append(DELIMETER);
     }
 }
-//messages.writeJSON(file);
-//new Date(System.currentTimeMillis()).toString()
