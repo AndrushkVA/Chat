@@ -70,7 +70,7 @@ public class Interface {
         }
     }
 
-    private void searchMessagesForCertainPeriod(PrintStream logger, Messages messages, Scanner sc) {
+    private void searchMessagesForCertainPeriod(PrintStream logger, Messages messages, Scanner sc) throws Exception {
         List<Message> resultSearch;
         System.out.print("Enter the period of \"yyyy:MM:dd HH:mm:ss\" \nFrom:");
         String dateFrom = sc.nextLine();
@@ -83,7 +83,7 @@ public class Interface {
         logger.append(DELIMETER);
     }
 
-    private void searchMessagesByRegex(PrintStream logger, Messages messages, Scanner sc) {
+    private void searchMessagesByRegex(PrintStream logger, Messages messages, Scanner sc) throws Exception {
         List<Message> resultSearch;
         System.out.println("Enter a regular expression:");
         String regex = sc.nextLine();
@@ -93,7 +93,7 @@ public class Interface {
         logger.append(DELIMETER);
     }
 
-    private void searchMessagesByKeyword(PrintStream logger, Messages messages, Scanner sc) {
+    private void searchMessagesByKeyword(PrintStream logger, Messages messages, Scanner sc) throws Exception {
         List<Message> resultSearch;
         System.out.println("Enter a keyword:");
         String keyword = sc.nextLine();
@@ -103,7 +103,7 @@ public class Interface {
         logger.append(DELIMETER);
     }
 
-    private void searchMessagesByAuthor(PrintStream logger, Messages messages, Scanner sc) {
+    private void searchMessagesByAuthor(PrintStream logger, Messages messages, Scanner sc) throws Exception {
         List<Message> resultSearch;
         System.out.println("Enter the name of the author:");
         String author = sc.nextLine();
@@ -113,13 +113,13 @@ public class Interface {
         logger.append(DELIMETER);
     }
 
-    private void showHistory(PrintStream logger, Messages messages) {
+    private void showHistory(PrintStream logger, Messages messages) throws Exception {
         logger.append("A user wants to know the entire history of messages\n");
         messages.showHistoryMessages(messages.getMessages(), logger);
         logger.append(DELIMETER);
     }
 
-    private void deleteMessage(PrintStream logger, Messages messages, Scanner sc) {
+    private void deleteMessage(PrintStream logger, Messages messages, Scanner sc) throws Exception {
         System.out.println("Enter the message id");
         String delId = sc.nextLine();
         logger.append("A user wants to delete the message with ID number:").append(String.valueOf(delId)).append("\n");
@@ -127,7 +127,7 @@ public class Interface {
         logger.append(DELIMETER);
     }
 
-    private void addMessage(PrintStream logger, Messages messages) {
+    private void addMessage(PrintStream logger, Messages messages) throws Exception {
         logger.append("The user wants to add a new message\n");
         messages.inputMessage(logger);
         logger.append(DELIMETER);
