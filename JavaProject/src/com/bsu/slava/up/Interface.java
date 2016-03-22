@@ -4,18 +4,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.lang.String;
-import java.lang.System;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.bsu.slava.up.MessageUtils.*;
+import static com.bsu.slava.up.MessageUtils.DELIMETER;
+import static com.bsu.slava.up.MessageUtils.OPERATIONS_MESSAGE;
 
 public class Interface {
 
 
     public void show(PrintStream logger) throws Exception {
-        List<Message> resultSearch;
         Messages messages = new Messages();
         Scanner sc = new Scanner(System.in);
         logger.println(OPERATIONS_MESSAGE);

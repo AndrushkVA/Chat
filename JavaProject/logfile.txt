@@ -11,8 +11,4 @@ Select the desired operation:
 10)Quit the program;
 ========================================
 
-The user wants to download the information from the sms.json file
-File has been successfully read
-
-========================================
-This user has decided to quit the application
+No line found
