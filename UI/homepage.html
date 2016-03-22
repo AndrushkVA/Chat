@@ -4,11 +4,13 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="vk_button_send.css">
+    <script src = "todo.js"></script>
 		<title>FPMI Chat</title>
 		<link rel="shortcut icon" type="image/png" href="http://www.iconsearch.ru/uploads/icons/nuvola2/128x128/chat.png">
 	</head>
-	<body class = "bg">
+	<body onload = "run()" class = "bg">
 		<h1>FPMI Chat</h1>
+    <main class="todos">
       <div id = "chat">
       	<div class = "myMessage">
           <aside>
@@ -72,7 +74,7 @@
 
       <div class="addMessage">
         <div class="myName">
-          <img src="http://rucodelnica.ru/forum/images/medals/z1.png" width="17px" heigth="17px" /><b> Mike</b><button class = "todo-button-re"></button>
+          <img src="http://rucodelnica.ru/forum/images/medals/z1.png" width="17px" heigth="17px" /><b> Mike</b><button class = "todo-button-re"></button><span class = "todo-result-text"> Всего </b><span class = "counter-holder"></span> сообщения(ий)</span>
         </div>
         <textarea type="text" wrap = "soft" id="todoText" placeholder="Введите сообщение..." class="todo-input-Text" cols = "50"></textarea>
         <button id="addButton" type="button" class="flat_button im_send_cont f1_1">Отправить</button>
@@ -80,5 +82,6 @@
       <footer><b>Вячеслав Андрушкевич <br>2 курс 6 группа<br>
       <a href="https://vk.com/id65267273"><img src="http://databy.com/uploads/posts/2015-12/1450165663_vkontakte-1.png" width="50px" height="50px" /></a>
       </footer>
+    </main>
   </body>
 </html>
