@@ -51,6 +51,7 @@ public class Messages {
 
         addMessage(new Message(id, author, message, String.valueOf(millis)));
         logger.append("Message added:\nId: ").append(String.valueOf(id)).append("\nAuthor: ").append(author).append("\nMessage: ").append(message).append("\nDate: ").append(String.valueOf(millis));
+        sc.close();
     }
 
     public void deleteMessageByID(String id, PrintStream logger) throws Exception {
@@ -106,9 +107,8 @@ public class Messages {
     public List<Message> searchMessagesByRegex(String regex) throws Exception {
         List<Message> findedMessges = new ArrayList<>();
         Pattern p = Pattern.compile(regex);
-        Matcher m;
         for (Message item : messages) {
-            m = p.matcher(item.getMessage());
+            Matcher m = p.matcher(item.getMessage());
             if (m.matches()) {
                 findedMessges.add(item);
             }
@@ -149,6 +149,7 @@ public class Messages {
             System.out.println("JSON-file is empty");
             logger.append("JSON-file is empty");
         }
+        br.close();
     }
 
     public void writeJSON(File file, PrintStream logger) throws FileNotFoundException {

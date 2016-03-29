@@ -10,6 +10,7 @@ public class Main {
         Interface menu = new Interface();
         File fileLog = new File(fileName);
         PrintStream logger = new PrintStream(fileLog);
+        logger.close();
 
         try {
             menu.show(logger);
