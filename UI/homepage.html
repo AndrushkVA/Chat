@@ -4,7 +4,6 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="vk_button_send.css">
-    <link rel="stylesheet" type="text/css" href="modal-contact-form.css">
     <script src = "todo.js"></script>
 		<title>FPMI Chat</title>
 		<link rel="shortcut icon" type="image/png" href="http://www.iconsearch.ru/uploads/icons/nuvola2/128x128/chat.png">
@@ -12,25 +11,8 @@
 	<body onload = "run()" class = "bg">
 		<h1>FPMI Chat</h1>
     <main class="todos">
-    <div id="envelope-re-message" class="envelope-re-message">
-      <a class="close-btn" title="Закрыть" href="javascript:void(0)" onclick = "document.getElementById('envelope-re-message').style.display='none';document.getElementById('fade').style.display='none'"></a>
-      <div class="title">Измените ваше сообщение</div>
-      <form method="post" action="">
-        <textarea class="your-message" placeholder=""></textarea>
-        <input type="submit" name="sender" value="Отправить" class="send-message">
-      </form>
-    </div>
-    <div id="envelope-re-name" class="envelope-re-message">
-      <a class="close-btn" title="Закрыть" href="javascript:void(0)" onclick = "document.getElementById('envelope-re-name').style.display='none';document.getElementById('fade').style.display='none'"></a>
-      <div class="title">Измените ваше имя</div>
-      <form method="post" action="">
-        <textarea class="your-message" placeholder=""></textarea>
-        <input type="submit" name="sender" value="Отправить" class="send-message">
-      </form>
-    </div>
-    <div id="fade" class="black-overlay"></div>
       <div id = "chat">
-      	<div class = "myMessage">
+      	<!-- <div class = "myMessage">
           <aside>
           <button class = "todo-button-re" href = "javascript:void(0)" onclick = "document.getElementById('envelope-re-message').style.display='block';document.getElementById('fade').style.display='block'"></button><button class = "todo-button-del"></button>
           </aside>
@@ -87,18 +69,17 @@
           <div class="text">
            <p><b>Jack:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus impedit dolorem ut reiciendis debitis laudantium dignissimos voluptates sint molestiae, sed in sapiente facilis rem, mollitia dolore eaque sit atque velit.</p> 
           </div>
-        </div>
-      </div>
-
+        </div> -->
+      </div> 
       <div class="addMessage">
         <div class="myName">
-          <img src="http://rucodelnica.ru/forum/images/medals/z1.png" width="17px" heigth="17px" /><b> Mike</b><button class = "todo-button-re" href = "javascript:void(0)" onclick = "document.getElementById('envelope-re-name').style.display='block';document.getElementById('fade').style.display='block'"></button><span class = "todo-result-text"> Всего </b><span class = "counter-holder"></span> сообщения(ий)</span>
+          <img src="http://rucodelnica.ru/forum/images/medals/z1.png" width="17px" heigth="17px" /><b id = "nameUser">Mike</b><button class = "todo-button-re" id = "reName"></button><!-- <span class = "todo-result-text"> Всего </b><span class = "counter-holder"></span> сообщения(ий)</span> -->
         </div>
         <textarea type="text" wrap = "soft" id="todoText" placeholder="Введите сообщение..." class="todo-input-Text" cols = "50"></textarea>
-        <button id="addButton" type="button" class="flat_button im_send_cont f1_1">Отправить</button>
+        <button id="addButton" type="button" class="flat_button im_send_cont f1_1" id = "sentMsg">Отправить</button>
       </div>
       <footer><b>Вячеслав Андрушкевич <br>2 курс 6 группа</br></b>
-      <a href="https://vk.com/id65267273"><img src="http://databy.com/uploads/posts/2015-12/1450165663_vkontakte-1.png" width="50px" height="50px" /></a>
+        <a href="https://vk.com/id65267273"><img src="http://databy.com/uploads/posts/2015-12/1450165663_vkontakte-1.png" width="50px" height="50px" /></a>
       </footer>
     </main>
   </body>

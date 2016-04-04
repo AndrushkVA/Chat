@@ -1,86 +1,12 @@
-﻿function run(){
-	var appContainer = document.getElementsByClassName('todos')[0];
+﻿var msgList = [];
 
-	updateCounter();
+function run(){
+	var appContainer = document.getElementsByClassName('todos')[0];
 
 	appContainer.addEventListener('click', delegateEvent);
 
 	msgList = loadMsgs() || [];
     renderLocalFiles(msgList);
-
-	updateCounter();
-}
-
-function renderLocalFiles(list) {
-    for (var i = 0; i < list.length; i++) {
-        renderMsg(list[i]);
-    }
-}
-
-function renderMsg(element) {
-
-    var divItem = document.createElement('div');
-    divItem.classList.add('message_box');
-    divItem.classList.add('your_msg');
-    divItem.id = 'd' + element.ide;
-    var msgContent = document.createElement('span');
-    msgContent.classList.add('message-style');
-    msgContent.id = element.ide;
-
-    msgContent.innerHTML = element.author + ': ' + element.message;
-    divItem.appendChild(msgContent);
-    var buttonEdit = createButton('edit', 'btn-edit' + element.ide);
-    var buttonDelete = createButton('delete', 'btn-delete' + element.ide);
-    divItem.appendChild(buttonDelete);
-    divItem.appendChild(buttonEdit);
-    if (element.edited) {
-        var editCheck = document.createElement('span');
-        editCheck.classList.add('sp');
-        editCheck.id = 'sp' + element.ide;
-        editCheck.innerHTML = 'edited';
-        divItem.appendChild(editCheck);
-    }
-    if (element.deleted) {
-        msgContent.innerHTML = "/message deleted/";
-        if (editCheck) {
-            divItem.removeChild(editCheck);
-        }
-        divItem.removeChild(buttonDelete);
-        divItem.removeChild(buttonEdit);
-    }
-
-    document.getElementById('message-area').appendChild(divItem);
-
-}
-
-function createMessage(author, content) {
-
-    var msgId = uniqueId();
-    var divItem = document.createElement('div');
-    divItem.classList.add('message_box');
-    divItem.classList.add('your_msg');
-    divItem.id = 'd' + msgId;
-    var msgContent = document.createElement('span');
-    msgContent.classList.add('message-style');
-    msgContent.id = msgId;
-    msgContent.innerHTML = author + ': ' + content;
-    divItem.appendChild(msgContent);
-    var buttonEdit = createButton('edit', 'btn-edit' + msgId);
-    var buttonDelete = createButton('delete', 'btn-delete' + msgId);
-    divItem.appendChild(buttonDelete);
-    divItem.appendChild(buttonEdit);
-    var msg = msgLocal(content, author, msgId);
-    msgList.push(msg);
-    saveMsgs(msgList);
-    return divItem;
-}
-
-function saveMsgs(listSave) {
-    if (typeof(Storage) == "undefined") {
-        alert("cant access localStorage");
-        return;
-    }
-    localStorage.setItem("MessageList", JSON.stringify(listSave));
 }
 
 function loadMsgs() {
@@ -90,7 +16,87 @@ function loadMsgs() {
     }
     var item = localStorage.getItem("MessageList");
     return item && JSON.parse(item);
+}
 
+function delegateEvent(evtObj) {
+	if (evtObj.type == 'click' && evtObj.target.id == 'reName') {
+        onNameEditButton(evtObj);
+    }
+	if ((evtObj.type == 'click') && evtObj.target.classList.contains('flat_button')) {
+        onInputButton(evtObj);
+    }
+    if (evtObj.type == 'click' && evtObj.target.id.substring(0, 6) == 'btn-re') {
+        onEditMessage(evtObj.target.id.substring(6), evtObj);
+    }
+    if (evtObj.type == 'click' && evtObj.target.id.substring(0, 7) == 'btn-del') {
+        onDeleteMessage(evtObj.target.id.substring(7), evtObj);
+    }
+}
+
+function onNameEditButton() {
+    var check = confirm('Do you really want to edit your name?');
+    if (check) {
+        var newName = prompt("Enter your name", document.getElementById("nameUser").innerHTML);
+        document.getElementById('nameUser').innerHTML = newName;
+    }
+}
+
+function onInputButton() {
+
+    var text = document.getElementById('todoText').value;
+    var author = document.getElementById('nameUser').innerHTML;
+
+    if (text.length > 0) {
+        var message = createMessage(author, text);
+        var msgArea = document.getElementById('chat');
+        msgArea.appendChild(message);
+    }
+    else {
+        alert("You can't send nothing!");
+    }
+    document.getElementById('todoText').value = '';
+}
+
+function createMessage(author, content) {
+
+    var msgId = uniqueId();
+    var b = document.createElement('b');
+    b.appendChild(document.createTextNode(author + ": ")) 
+
+    var divItem = document.createElement('div');
+    divItem.classList.add('myMessage');
+    divItem.id = 'd' + msgId;
+
+    var buttonRe = document.createElement('button');
+    buttonRe.classList.add('todo-button-re');
+    buttonRe.classList.add('todo-button-re-msg');
+    buttonRe.id = 'btn-re' + msgId;
+
+    var buttonDel = document.createElement('button');
+    buttonDel.classList.add('todo-button-del');
+    buttonDel.classList.add('todo-button-del-msg');
+    buttonDel.id = 'btn-del' + msgId;
+
+    var textItem = document.createElement('div');
+    textItem.classList.add('text');
+
+    var p = document.createElement('p');
+    p.id = msgId;
+    var aside = document.createElement('aside');
+    aside.appendChild(buttonRe);
+    aside.appendChild(buttonDel);
+    textItem.appendChild(b);
+    p.appendChild(document.createTextNode(content))
+
+    textItem.appendChild(p)
+    divItem.appendChild(aside)
+    divItem.appendChild(textItem);
+
+    var msg = msgLocal(content, author, msgId);
+    msgList.push(msg);
+    saveMsgs(msgList);
+
+    return divItem;
 }
 
 function uniqueId() {
@@ -109,66 +115,126 @@ function msgLocal(text, auth, ID, edited, deleted) {
     }
 }
 
-function delegateEvent(evtObj) {
-	if(evtObj.type === 'click' && evtObj.target.classList.contains('flat_button')){
-		onAddButtonClick(evtObj);
-	}
-	if (evtObj.type === 'click' && evtObj.target.class == 'todo-button-re'){
-		reButton(evtObj);
-	}
+function saveMsgs(listSave) {
+    if (typeof(Storage) == "undefined") {
+        alert("cant access localStorage");
+        return;
+    }
+    localStorage.setItem("MessageList", JSON.stringify(listSave));
 }
 
-function onAddButtonClick(){
-	var todoText = document.getElementById('todoText');
-
-	addTodo(todoText.value);
-	todoText.value = '';
-	updateCounter();
-} 
-
-function addTodo(value) {
-	if(!value){
-		return;
-	}
-
-	var item = createItem(value);
-	var items = document.getElementById('chat');
-
-	var k = 2;
-
-	items.appendChild(item);
-	updateCounter();
+function renderLocalFiles(list) {
+    document.getElementById('nameUser').innerHTML = list[list.length - 1].author;
+    for (var i = 0; i < list.length; i++) {
+        renderMsg(list[i]);
+    }
 }
 
-function createItem(text){
-	var divItem = document.createElement('div');
-	var buttonRe = document.createElement('button');
-	var buttonDel = document.createElement('button');
-	var textItem = document.createElement('div');
-	var p = document.createElement('p');
-	var asside = document.createElement('asside');
+function renderMsg(element) {
 
-	divItem.classList.add('myMessage');
-	buttonRe.classList.add('todo-button-re');
-	buttonDel.classList.add('todo-button-del');
-	textItem.classList.add('text');
-	asside.appendChild(buttonRe);
-	asside.appendChild(buttonDel);
-	p.appendChild(document.createTextNode(text))
-	textItem.appendChild(p)
-	divItem.appendChild(asside)
-	divItem.appendChild(textItem);
+    var msgId = element.ide;
+    var b = document.createElement('b');
+    if(element.deleted){
+        var de = document.createElement('de');
+        de.classList.add('delete');
+        de.innerHTML = "*deleted*";
+        b.appendChild(document.createTextNode(element.author + ": "));
 
-	return divItem;
+        var divItem = document.createElement('div');
+        divItem.classList.add('myMessage');
+        divItem.id = 'd' + msgId;
+
+        var textItem = document.createElement('div');
+        textItem.classList.add('text');
+
+        var p = document.createElement('p');
+        p.id = msgId;
+        p.appendChild(de);
+        textItem.appendChild(b);
+        textItem.appendChild(p);
+        divItem.appendChild(textItem);
+    }else{
+        if (element.edited) {
+        var ed = document.createElement('ed');
+        ed.classList.add('edit');
+        ed.innerHTML = "*edited* ";
+        b.appendChild(ed);
+        b.appendChild(document.createTextNode(element.author + ": "));
+        } else{
+            b.appendChild(document.createTextNode(element.author + ": "));
+        }
+
+        var divItem = document.createElement('div');
+        divItem.classList.add('myMessage');
+        divItem.id = 'd' + msgId;
+
+        var buttonRe = document.createElement('button');
+        buttonRe.classList.add('todo-button-re');
+        buttonRe.classList.add('todo-button-re-msg');
+        buttonRe.id = 'btn-re' + msgId;
+
+        var buttonDel = document.createElement('button');
+        buttonDel.classList.add('todo-button-del');
+        buttonDel.classList.add('todo-button-del-msg');
+        buttonDel.id = 'btn-del' + msgId;
+
+        var textItem = document.createElement('div');
+        textItem.classList.add('text');
+
+        var p = document.createElement('p');
+        p.id = msgId;
+        var aside = document.createElement('aside');
+        aside.appendChild(buttonRe);
+        aside.appendChild(buttonDel);
+        textItem.appendChild(b);
+        p.appendChild(document.createTextNode(element.message))
+
+        textItem.appendChild(p)
+        divItem.appendChild(aside)
+        divItem.appendChild(textItem);
+    }
+    
+    document.getElementById('chat').appendChild(divItem);
 }
 
-function reButton(){
-	
+function onEditMessage(messageID) {
+
+    var check = confirm('Do you really want to edit this message?');
+    if (check) {
+        var newMsg = prompt("Enter new message", document.getElementById(messageID).innerText);
+        for(var i = 0; i < msgList.length; i++){
+            if(msgList[i].ide == messageID){
+                msgList[i].message = newMsg;
+                if(!msgList[i].edited){
+                    msgList[i].edited = !msgList[i].edited;
+                }
+            }
+        }
+    }
+    saveMsgs(msgList);
+    document.getElementById('chat').innerHTML = '';
+    renderLocalFiles(msgList);
 }
 
-function updateCounter(){
+function onDeleteMessage(messageID) {
+    var check = confirm("You really want to delete this message?");
+    if (check) {
+        for(var i = 0; i < msgList.length; i++){
+            if(msgList[i].ide == messageID){
+                if(!msgList[i].deleted){
+                    msgList[i].deleted = !msgList[i].deleted;
+                }
+            }
+        }
+    }
+    saveMsgs(msgList);
+    document.getElementById('chat').innerHTML = '';
+    renderLocalFiles(msgList);
+}
+
+/*function updateCounter(){
 	var items = document.getElementsByClassName('chat')[0];
 	var counter = document.getElementsByClassName('counter-holder')[0];
 
     counter.innerText = chat.children.length.toString();
-}
+}*/
