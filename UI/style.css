@@ -20,6 +20,10 @@ h1{
   overflow-y: auto; 
 }
 
+#online{
+  text-align: right;
+}
+
 p{
   margin: 1px;
 }

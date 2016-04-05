@@ -24,6 +24,7 @@ function delegateEvent(evtObj) {
     }
 	if ((evtObj.type == 'click') && evtObj.target.classList.contains('flat_button')) {
         onInputButton(evtObj);
+        document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight - document.getElementById('chat').clientHeight;
     }
     if (evtObj.type == 'click' && evtObj.target.id.substring(0, 6) == 'btn-re') {
         onEditMessage(evtObj.target.id.substring(6), evtObj);
@@ -128,6 +129,7 @@ function renderLocalFiles(list) {
     for (var i = 0; i < list.length; i++) {
         renderMsg(list[i]);
     }
+    document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight - document.getElementById('chat').clientHeight;
 }
 
 function renderMsg(element) {
