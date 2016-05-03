@@ -175,10 +175,9 @@ function msgNotDeleted(element){
         ed.classList.add('edit');
         ed.innerHTML = "*edited* ";
         b.appendChild(ed);
-        b.appendChild(document.createTextNode(element.author + ": "));
-    } else {
-        b.appendChild(document.createTextNode(element.author + ": "));
+      
     }
+    b.appendChild(document.createTextNode(element.author + ": "));
 
     var divItem = document.createElement('div');
     divItem.classList.add('myMessage');
