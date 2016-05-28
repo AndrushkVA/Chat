@@ -382,6 +382,7 @@ function saveMsgs(listSave) {
 }*/
 
 function defaultErrorHandler(message) {
+    alert("Нет подключения к серверу!")
     console.error(message);
     output(message);
 }
