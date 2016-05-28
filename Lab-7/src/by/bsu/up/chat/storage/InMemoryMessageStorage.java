@@ -55,6 +55,7 @@ public class InMemoryMessageStorage implements MessageStorage {
         for (Message ms : messages) {
             if (message.getId().equals(ms.getId())) {
                 ms.setText(message.getText());
+                ms.setEdited(true);
                 //logger.append("Message the given id was successfully removed");
                 try {
                     writeJSON(new File(DEFAULT_PERSISTENCE_FILE));
@@ -72,7 +73,7 @@ public class InMemoryMessageStorage implements MessageStorage {
     public synchronized boolean removeMessage(String messageId) {
         for (Message ms : messages) {
             if (messageId.equals(ms.getId())) {
-                messages.remove(ms);
+                ms.setDeleted(true);
                 //logger.append("Message the given id was successfully removed");
                 try {
                     writeJSON(new File(DEFAULT_PERSISTENCE_FILE));

@@ -186,6 +186,8 @@ public class MessageHelper {
         jsonObject.put(Constants.Message.FIELD_AUTHOR, message.getAuthor());
         jsonObject.put(Constants.Message.FIELD_TIMESTAMP, message.getTimestamp());
         jsonObject.put(Constants.Message.FIELD_TEXT, message.getText());
+        jsonObject.put(Constants.Message.FIELD_EDITED, message.isEdited());
+        jsonObject.put(Constants.Message.FIELD_DELETED, message.isDeleted());
         return jsonObject;
     }
 }
