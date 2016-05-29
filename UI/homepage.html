@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="vk_button_send.css">
-    <script src = "todo.js"></script>
-		<title>FPMI Chat</title>
-		<link rel="shortcut icon" type="image/png" href="http://www.iconsearch.ru/uploads/icons/nuvola2/128x128/chat.png">
-	</head>
-	<body onload = "run()" class = "bg">
-		<h1>FPMI Chat</h1>
-    <main class="todos">
-      <div id = "chat">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="vk_button_send.css">
+  <script src = "todo.js"></script>
+  <title>FPMI Chat</title>
+  <link rel="shortcut icon" type="image/png" href="http://www.iconsearch.ru/uploads/icons/nuvola2/128x128/chat.png">
+</head>
+<body onload = "run()" class = "bg">
+  <main class="todos">
+    <h1 id = "online/ofline">FPMI Chat<img src="http://www.redcube.ru/files/sources/2.8f7614ebb399a685bca5b7e7e98e3bab.png" width="22px" heigth="22px" /><button class = "btn-re-fresh"></button></h1>
+    <div id = "chat">
       	<!-- <div class = "myMessage">
           <aside>
           <button class = "todo-button-re" href = "javascript:void(0)" onclick = "document.getElementById('envelope-re-message').style.display='block';document.getElementById('fade').style.display='block'"></button><button class = "todo-button-del"></button>
@@ -73,7 +73,7 @@
       </div> 
       <div class="addMessage">
         <div class="myName">
-          <img src="http://seo.af/wp-content/uploads/pep-vn/5eca4ece/krug-css-circle-7f.png" width="17px" heigth="17px" /><b id = "nameUser">Mike</b><button class = "todo-button-re" id = "reName"></button><!-- <span class = "todo-result-text"> Всего </b><span class = "counter-holder"></span> сообщения(ий)</span> -->
+          <b id = "nameUser">Your name</b><button class = "todo-button-re" id = "reName"></button><!-- <span class = "todo-result-text"> Всего </b><span class = "counter-holder"></span> сообщения(ий)</span> -->
         </div>
         <textarea type="text" wrap = "soft" id="todoText" placeholder="Введите сообщение..." class="todo-input-Text" cols = "50"></textarea>
         <button id="addButton" type="button" class="flat_button im_send_cont" id = "sentMsg">Отправить</button>
@@ -81,6 +81,8 @@
       <footer><b>Вячеслав Андрушкевич <br>2 курс 6 группа</br></b>
         <a href="https://vk.com/id65267273"><img src="http://databy.com/uploads/posts/2015-12/1450165663_vkontakte-1.png" width="50px" height="50px" /></a>
       </footer>
+
+
     </main>
   </body>
-</html>
+  </html>

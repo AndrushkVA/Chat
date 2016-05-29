@@ -1,4 +1,4 @@
-﻿//var msgList = [];
+var isConnected = 0;
 
 var Application = {
     mainUrl : 'http://localhost:999/chat',
@@ -7,6 +7,77 @@ var Application = {
 };
 
 var url = Application.mainUrl + '?token=' + Application.token;
+
+function Connect() {
+    if(isConnected){
+        return;
+    }
+
+    function whileConnected() {
+        isConnected = setTimeout(function () {
+            ajax('GET', url, null, function(responseText){                    
+                document.getElementById('online/ofline').innerHTML = 'FPMI Chat<img src="http://seo.af/wp-content/uploads/pep-vn/5eca4ece/krug-css-circle-7f.png" width="22px" heigth="22px" /><button class = "btn-re-fresh"></button>';
+                if(JSON.stringify(Application.msgList) != JSON.stringify(JSON.parse(responseText).messages)){
+                    var response = JSON.parse(responseText);
+
+                    Application.msgList = response.messages;
+                    Application.token = response.token;
+                    //document.getElementById('chat').innerHTML = '';
+                    renderLocalFilesWithoutName(Application.msgList);
+                }
+                whileConnected();
+            });
+        }, seconds(1));
+    }
+
+    whileConnected();
+}
+
+function seconds(value) {
+    return Math.round(value * 1000);
+}
+
+function run(){
+	var appContainer = document.getElementsByClassName('todos')[0];
+    appContainer.addEventListener('click', delegateEvent);
+
+    onNameEditButtonFirst();
+    Connect();
+    document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight - document.getElementById('chat').clientHeight;
+}
+
+function delegateEvent(evtObj) {
+    if (evtObj.type == 'click' && evtObj.target.id == 'reName') {
+        isConnected = 0;
+        onNameEditButton(evtObj);
+        if(isConnected == 0)
+            Connect();
+    }
+    if ((evtObj.type == 'click') && evtObj.target.classList.contains('flat_button')) {
+        isConnected = 0;
+        onInputButton(evtObj);
+        if(isConnected == 0)
+            Connect();
+        document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight - document.getElementById('chat').clientHeight;
+    }
+    if (evtObj.type == 'click' && evtObj.target.id.substring(0, 6) == 'btn-re') {
+        isConnected = 0;
+        onEditMessage(evtObj.target.id.substring(6), evtObj);
+        if(isConnected == 0)
+            Connect();
+    }
+    if (evtObj.type == 'click' && evtObj.target.id.substring(0, 7) == 'btn-del') {
+        isConnected = 0;
+        onDeleteMessage(evtObj.target.id.substring(7), evtObj);
+        if(isConnected == 0)
+            Connect();
+    }
+    if (evtObj.type == 'click' && evtObj.target.classList.contains('btn-re-fresh')) {
+        loadTasks(function(){
+            renderLocalFilesWithoutName(Application.msgList);
+        });
+    }
+}
 
 function loadTasks(done) {
     ajax('GET', url, null, function(responseText){
@@ -18,49 +89,6 @@ function loadTasks(done) {
     });
 }
 
-/*function addTask(text, done) {
-    if(text == '' || text == null)
-        return;
-
-    var task = newTask(text);
-
-    var url = Application.mainUrl + '?token=' + Application.token;
-    ajax('POST', Application.mainUrl, JSON.stringify(task), function(){
-        //Application.msgList.push(task);
-        done();
-    });
-}*/
-
-function run(){
-	var appContainer = document.getElementsByClassName('todos')[0];
-
-    appContainer.addEventListener('click', delegateEvent);
-
-    loadTasks(function(){
-        renderLocalFiles(Application.msgList);
-    });
-
-    //msgList = loadMsgs() || [];
-    //renderLocalFiles(Application.msgist);
-    document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight - document.getElementById('chat').clientHeight;
-}
-
-function delegateEvent(evtObj) {
-    if (evtObj.type == 'click' && evtObj.target.id == 'reName') {
-        onNameEditButton(evtObj);
-    }
-    if ((evtObj.type == 'click') && evtObj.target.classList.contains('flat_button')) {
-        onInputButton(evtObj);
-        document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight - document.getElementById('chat').clientHeight;
-    }
-    if (evtObj.type == 'click' && evtObj.target.id.substring(0, 6) == 'btn-re') {
-        onEditMessage(evtObj.target.id.substring(6), evtObj);
-    }
-    if (evtObj.type == 'click' && evtObj.target.id.substring(0, 7) == 'btn-del') {
-        onDeleteMessage(evtObj.target.id.substring(7), evtObj);
-    }
-}
-
 function renderLocalFiles(list) {
     document.getElementById('nameUser').innerHTML = list[list.length - 1].author;
     for (var i = 0; i < list.length; i++) {
@@ -69,6 +97,7 @@ function renderLocalFiles(list) {
 }
 
 function renderLocalFilesWithoutName(list) {
+    document.getElementById('chat').innerHTML = '';
     for (var i = 0; i < list.length; i++) {
         renderMsg(list[i]);
     }
@@ -89,31 +118,6 @@ function renderMsg(element) {
         }
     }
     document.getElementById('chat').appendChild(divItem);
-}
-
-function msgDeleted(element){
-    var msgId = element.ide;
-    var b = document.createElement('b');
-
-    var de = document.createElement('de');
-    de.classList.add('delete');
-    de.innerHTML = "*deleted*";      
-    b.appendChild(document.createTextNode(element.author + ": "));
-    var divItem = document.createElement('div');
-    divItem.classList.add('myMessage');
-    divItem.id = 'd' + msgId;
-
-    var textItem = document.createElement('div');
-    textItem.classList.add('text');
-
-    var p = document.createElement('p');
-    p.id = msgId;
-    p.appendChild(de);
-    textItem.appendChild(b);
-    textItem.appendChild(p);
-    divItem.appendChild(textItem);
-
-    return divItem;
 }
 
 function myMsgNotDeleted(element){
@@ -161,6 +165,31 @@ function myMsgNotDeleted(element){
     return divItem;
 }
 
+function msgDeleted(element){
+    var msgId = element.ide;
+    var b = document.createElement('b');
+
+    var de = document.createElement('de');
+    de.classList.add('delete');
+    de.innerHTML = "*deleted*";      
+    b.appendChild(document.createTextNode(element.author + ": "));
+    var divItem = document.createElement('div');
+    divItem.classList.add('myMessage');
+    divItem.id = 'd' + msgId;
+
+    var textItem = document.createElement('div');
+    textItem.classList.add('text');
+
+    var p = document.createElement('p');
+    p.id = msgId;
+    p.appendChild(de);
+    textItem.appendChild(b);
+    textItem.appendChild(p);
+    divItem.appendChild(textItem);
+
+    return divItem;
+}
+
 function msgNotDeleted(element){
     var msgId = element.id;
     var b = document.createElement('b');
@@ -178,24 +207,12 @@ function msgNotDeleted(element){
     divItem.classList.add('myMessage');
     divItem.id = 'd' + msgId;
 
-    /*var buttonRe = document.createElement('button');
-    buttonRe.classList.add('todo-button-re');
-    buttonRe.classList.add('todo-button-re-msg');
-    buttonRe.id = 'btn-re' + msgId;
-
-    var buttonDel = document.createElement('button');
-    buttonDel.classList.add('todo-button-del');
-    buttonDel.classList.add('todo-button-del-msg');
-    buttonDel.id = 'btn-del' + msgId;*/
-
     var textItem = document.createElement('div');
     textItem.classList.add('text');
 
     var p = document.createElement('p');
     p.id = msgId;
-    /*var aside = document.createElement('aside');
-    aside.appendChild(buttonRe);
-    aside.appendChild(buttonDel);*/
+    
     textItem.appendChild(b);
     p.appendChild(document.createTextNode(element.text))
 
@@ -206,21 +223,19 @@ function msgNotDeleted(element){
     return divItem;
 }
 
-/*function loadMsgs() {
-    if (typeof(Storage) == "undefined") {
-        alert("cant access localStorage");
-        return;
-    }
-    var item = localStorage.getItem("MessageList");
-    return item && JSON.parse(item);
-}*/
-
 function onNameEditButton() {
     var check = confirm('Do you really want to edit your name?');
     if (check) {
         var newName = prompt("Enter your name", document.getElementById("nameUser").innerHTML);
         document.getElementById('nameUser').innerHTML = newName;
     }
+    document.getElementById('chat').innerHTML = '';
+    renderLocalFilesWithoutName(Application.msgList);
+}
+
+function onNameEditButtonFirst() {
+    var newName = prompt("Enter your name", "Incognita");
+    document.getElementById('nameUser').innerHTML = newName;
     document.getElementById('chat').innerHTML = '';
     renderLocalFilesWithoutName(Application.msgList);
 }
@@ -259,9 +274,6 @@ function onEditMessage(messageID) {
             });
         });
     }
-    /*saveMsgs(msgList);
-    document.getElementById('chat').innerHTML = '';
-    renderLocalFiles(msgList);*/
 }
 
 function onDeleteMessage(messageID) {
@@ -275,62 +287,6 @@ function onDeleteMessage(messageID) {
             });
         });
     }
-    /*saveMsgs(msgList);
-    document.getElementById('chat').innerHTML = '';
-    renderLocalFiles(msgList);*/
-}
-
-/*function createMessage(author, content) {
-
-    var msgId = uniqueId();
-    var b = document.createElement('b');
-    b.appendChild(document.createTextNode(author + ": ")) 
-
-    var divItem = document.createElement('div');
-    divItem.classList.add('myMessage');
-    divItem.id = 'd' + msgId;
-
-    var buttonRe = document.createElement('button');
-    buttonRe.classList.add('todo-button-re');
-    buttonRe.classList.add('todo-button-re-msg');
-    buttonRe.id = 'btn-re' + msgId;
-
-    var buttonDel = document.createElement('button');
-    buttonDel.classList.add('todo-button-del');
-    buttonDel.classList.add('todo-button-del-msg');
-    buttonDel.id = 'btn-del' + msgId;
-
-    var textItem = document.createElement('div');
-    textItem.classList.add('text');
-
-    var p = document.createElement('p');
-    p.id = msgId;
-    var aside = document.createElement('aside');
-    aside.appendChild(buttonRe);
-    aside.appendChild(buttonDel);
-    textItem.appendChild(b);
-    p.appendChild(document.createTextNode(content))
-
-    textItem.appendChild(p)
-    divItem.appendChild(aside)
-    divItem.appendChild(textItem);
-
-    var msg = msgLocal(content, author, msgId);
-    msgList.push(msg);
-    saveMsgs(msgList);
-
-    return divItem;
-}*/
-
-/*function createMessage(author, text){
-    var msg = msgLocal(text, author, uniqueId());
-    return 
-}*/
-
-function uniqueId() {
-    var date = Date.now();
-    var random = Math.random() * Math.random();
-    return Math.floor(date * random).toString();
 }
 
 function msgLocal(text, auth, ID, edited, deleted) {
@@ -366,25 +322,18 @@ function msgLocalToDelete(ID) {
     }
 }
 
-function saveMsgs(listSave) {
-    if (typeof(Storage) == "undefined") {
-        alert("cant access localStorage");
-        return;
-    }
-    localStorage.setItem("MessageList", JSON.stringify(listSave));
+function uniqueId() {
+    var date = Date.now();
+    var random = Math.random() * Math.random();
+    return Math.floor(date * random).toString();
 }
 
-/*function updateCounter(){
-	var items = document.getElementsByClassName('chat')[0];
-	var counter = document.getElementsByClassName('counter-holder')[0];
-
-    counter.innerText = chat.children.length.toString();
-}*/
-
 function defaultErrorHandler(message) {
-    alert("Нет подключения к серверу!")
-    console.error(message);
-    output(message);
+    alert("Нет подключения к серверу!");
+    isConnected = 1;
+    document.getElementById('online/ofline').innerHTML = 'FPMI Chat<img src="http://www.redcube.ru/files/sources/2.8f7614ebb399a685bca5b7e7e98e3bab.png" width="22px" heigth="22px" /><button class = "btn-re-fresh"></button>';
+    //console.error(message);
+    //output(message);
 }
 
 function isError(text) {
@@ -440,3 +389,31 @@ function ajax(method, url, data, continueWith, continueWithError) {
 
     xhr.send(data);
 }
+
+/*function loadMsgs() {
+    if (typeof(Storage) == "undefined") {
+        alert("cant access localStorage");
+        return;
+    }
+    var item = localStorage.getItem("MessageList");
+    return item && JSON.parse(item);
+}*/
+
+/*function saveMsgs(listSave) {
+    if (typeof(Storage) == "undefined") {
+        alert("cant access localStorage");
+        return;
+    }
+    localStorage.setItem("MessageList", JSON.stringify(listSave));
+
+    //saveMsgs(msgList);
+    //document.getElementById('chat').innerHTML = '';
+    //renderLocalFiles(msgList);
+}*/
+
+/*function updateCounter(){
+    var items = document.getElementsByClassName('chat')[0];
+    var counter = document.getElementsByClassName('counter-holder')[0];
+
+    counter.innerText = chat.children.length.toString();
+}*/

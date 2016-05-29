@@ -39,6 +39,17 @@ p{
   border: none;
 }
 
+.btn-re-fresh{
+  width: 20px;
+  height: 20px;
+  background: url("http://iconspot.ru/files/186384.png");
+  background-size: cover;
+  line-height: 40px;
+  font-size: 40px;
+  text-decoration: none;
+  border: none;
+}
+
 .todo-result-text{
   float: right;
   margin-right: 5px;
