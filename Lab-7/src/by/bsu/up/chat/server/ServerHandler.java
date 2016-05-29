@@ -116,7 +116,6 @@ public class ServerHandler implements HttpHandler {
     private Response doDelete(HttpExchange httpExchange) {
         try {
             Message message = MessageHelper.getClientDelMessage(httpExchange.getRequestBody());
-            //logger.info("hui\n" + message + "\nhui\n");
             logger.info(String.format("Deleted message from user: %s", message));
             messageStorage.removeMessage(message.getId());
             return Response.ok();
