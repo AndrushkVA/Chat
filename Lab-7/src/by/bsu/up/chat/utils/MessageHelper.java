@@ -1,15 +1,11 @@
-package by.bsu.up.chat.utils;
+package utils;
 
-import by.bsu.up.chat.Constants;
-import by.bsu.up.chat.InvalidTokenException;
-import by.bsu.up.chat.common.models.Message;
-import by.bsu.up.chat.logging.Logger;
-import by.bsu.up.chat.logging.impl.Log;
 import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import structures.Message;
 
 import java.io.*;
 import java.util.LinkedList;
@@ -25,7 +21,7 @@ public class MessageHelper {
     public static final String TOKEN_FORMAT = "TN[0-9]{2,}EN";
 
     private static final JSONParser jsonParser = new JSONParser();
-    private static final Logger logger = Log.create(MessageHelper.class);
+    //private static final Logger logger = Log.create(MessageHelper.class);
 
     /**
      * Builds token based on amount of messages, which are
@@ -63,7 +59,7 @@ public class MessageHelper {
             int stateCode = Integer.valueOf(encodedIndex);
             return decodeIndex(stateCode);
         } catch (NumberFormatException e) {
-            logger.error("Could not parse token", e);
+            //logger.error("Could not parse token", e);
             throw new InvalidTokenException("Invalid encoded value: " + encodedIndex);
         }
     }
@@ -175,7 +171,7 @@ public class MessageHelper {
             }
             return outStream.toString();
         } catch (IOException e) {
-            logger.error("An error occurred while reading input stream", e);
+            //logger.error("An error occurred while reading input stream", e);
             throw new RuntimeException(e);
         }
     }
