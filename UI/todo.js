@@ -17,14 +17,15 @@ function Connect() {
         isConnected = setTimeout(function () {
             ajax('GET', url, null, function(responseText){                    
                 document.getElementById('online/ofline').innerHTML = 'FPMI Chat<img src="http://seo.af/wp-content/uploads/pep-vn/5eca4ece/krug-css-circle-7f.png" width="22px" heigth="22px" /><button class = "btn-re-fresh"></button>';
-                if(JSON.stringify(Application.msgList) != JSON.stringify(JSON.parse(responseText).messages)){
+                
+                //if(JSON.stringify(Application.msgList) != JSON.stringify(JSON.parse(responseText).messages)){
                     var response = JSON.parse(responseText);
 
                     Application.msgList = response.messages;
                     Application.token = response.token;
                     //document.getElementById('chat').innerHTML = '';
                     renderLocalFilesWithoutName(Application.msgList);
-                }
+                //}
                 whileConnected();
             });
         }, seconds(1));
